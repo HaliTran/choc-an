@@ -28,7 +28,7 @@ class Serive : public Address {
     private:
         int id;
         int cost;
-}
+};
 
 
 class Member : public Address{
