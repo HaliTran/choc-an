@@ -25,7 +25,7 @@ class Address : public Information{
     protected:
         string street;
         string city;
-        string State;
+        string state;
         int zip_code;
 };
 
