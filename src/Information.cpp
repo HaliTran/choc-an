@@ -21,24 +21,75 @@ Information::Information(const Information &to_copy)
 }
 
 
+//update username
 void Information::updateUserName(const string& to_update)
 {
 	user_name = to_update;
 }
 
-
+//update id number
 void Information::updateId(const int new_id)
 {
 	id = new_id;
 }
 
+//get the id number
 int Information::getId()
 {
 	return id;
 }
 
-
+//get the user name
 string Information::getUserName()
 {
 	return user_name;
+}
+
+//operator overloading 
+bool Information::operator==(const int compare)
+{
+	if(id == compare)
+		return true;
+	else
+		return false;
+}
+
+bool Information::operator!=(const int compare)
+{
+	if(id != compare)
+		return true;
+	else
+		return false;
+}
+
+bool Information::operator>=(const int compare)
+{
+	if(id >= compare)
+		return true;
+	else
+		return false;
+
+}
+
+bool Information::operator>(const int compare)
+{
+	if(id > compare)
+		return true;
+	else false;
+}
+
+bool Information::operator<=(const int compare)
+{
+	if(id <= compare)
+		return true;
+	else
+		return false;
+}
+
+bool Information::operator<(const int compare)
+{
+	if(id <= compare)
+		return true;
+	else
+		return false;
 }
