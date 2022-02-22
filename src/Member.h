@@ -16,5 +16,12 @@ class Member : public Address{
         Member(Member& to_copy);
         ~Member();
 
+        bool operator<(const Member& compare);
+        bool operator<=(const Member& compare);
+        bool operator>(const Member& compare);
+        bool operator>=(const Member& compare);
+        bool operator!=(const Member& compare);
+        bool operator==(const Member& compare);
+
         bool generateReport();
 };
