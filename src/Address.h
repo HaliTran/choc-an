@@ -10,7 +10,7 @@ class Address : public Information{
         Address();
         Address(const string& u_name, const int id, const string& st, const string& city, const string& state, const int zip);
         Address(const Information &to_copy);
-        ~Address();
+        // ~Address();
 
         string getStreet();
         string getCity();

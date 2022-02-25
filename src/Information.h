@@ -10,7 +10,7 @@ class Information{
         Information();
         Information(const string&, const int);
         Information(const Information &to_copy);
-        ~Information();
+        // ~Information();
 
         string getUserName();
         int getId();

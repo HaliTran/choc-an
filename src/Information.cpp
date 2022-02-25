@@ -75,7 +75,7 @@ bool Information::operator>(const int compare)
 {
 	if(id > compare)
 		return true;
-	else false;
+	else return false;
 }
 
 bool Information::operator<=(const int compare)
