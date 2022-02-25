@@ -25,7 +25,7 @@ class Information{
         bool operator!=(const int);
         bool operator==(const int);
 
-    private:
+    protected:
         string user_name;
         int id;
 };

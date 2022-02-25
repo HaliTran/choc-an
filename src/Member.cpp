@@ -9,7 +9,7 @@ Member::Member(const string& u_name, const int id, const string& st, const strin
 }
 
 Member::Member(Member& to_copy) 
-    :Address(to_copy.u_name, to_copy.id, to_copy.st, to_copy.city, to_copy.state, to_copy.zip_code) {
+    :Address(to_copy) {
 
 }
 
@@ -18,20 +18,20 @@ Member::~Member() {
 }
 
 bool Member::operator<(const Member& compare) {
-    return Information<(compare.id);
+    return Information::operator<(compare.id);
 }
 bool Member::operator<=(const Member& compare) {
-    return Information<=(compare.id);
+    return Information::operator<(compare.id);
 }
 bool Member::operator>(const Member& compare) {
-    return Information>(compare.id);
+    return Information::operator<(compare.id);
 }
 bool Member::operator>=(const Member& compare) {
-    return Information>=(compare.id);
+    return Information::operator<(compare.id);
 }
 bool Member::operator!=(const Member& compare) {
-    return Information!=(compare.id);
+    return Information::operator<(compare.id);
 }
 bool Member::operator==(const Member& compare) {
-    return Information==(compare.id);
+    return Information::operator<(compare.id);
 }
