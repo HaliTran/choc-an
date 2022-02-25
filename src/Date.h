@@ -21,6 +21,14 @@ class Date : public Information {
         void updateDay(const int);
         void updateYear(const int);
 
+        bool operator<(const int month, const int day, const int year);
+        bool operator<=(const int month, const int day, const int year);
+        bool operator>(const int month, const int day, const int year);
+        bool operator>=(const int month, const int day, const int year);
+        bool operator!=(const int month, const int day, const int year);
+        bool operator==(const int month, const int day, const int year);
+
+
     protected:
         int month;
         int day;
