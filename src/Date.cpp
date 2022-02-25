@@ -7,11 +7,11 @@ Date::Date() {
 		// TODO handle error
 	}
 
-	std::tm* tm = localtime(&t);
+	std::tm* tm = std::localtime(&t);
 
-	month = tm->tm_mon;
+	month = tm->tm_mon + 1;
 	day = tm->tm_mday;
-	year = tm->tm_year;
+	year = tm->tm_year + 1900;
 	comp_time = t;
 }
 
