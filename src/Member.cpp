@@ -43,16 +43,9 @@ bool Member::operator==(const Member &compare)
     return Information::operator<(compare.id);
 }
 
-<<<<<<< HEAD
-
 Service& Member::getService(const int id) {
     for (auto i : consult) {
         if (i.getId() == id) return i;
     }
     Service temp;
     return temp;
-=======
-Service &Member::getService(const int id)
-{
->>>>>>> d957fd3adc2a2b969f60bae1e3d878567431c3ef
-}
