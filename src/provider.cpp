@@ -32,3 +32,7 @@ int Provider::getTotalConsultations() {
 int Provider::getTotalFee() {
     return total_fee;
 }
+
+Service& Provider::getService(const int id) {
+
+}

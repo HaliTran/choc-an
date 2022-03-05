@@ -22,9 +22,12 @@ class Provider : public Address{
         int getTotalFee();
     
         bool generateReport();
+        Service& getService(const int id);
 
     protected:
         vector<Service> Service_list;
         int total_consultations;
         int total_fee;
+
+
 };
