@@ -17,7 +17,6 @@ class Provider : public Address{
         bool deleteService(const int);
         void recordService(const Service&);
         
-        Service getService(const int); 
         int getTotalConsultations();
         int getTotalFee();
     
