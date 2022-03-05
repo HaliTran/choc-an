@@ -30,5 +30,7 @@ class Provider : public Address{
         int total_consultations;
         int total_fee;
 
+        void inputService(Member& mem);
+
 
 };

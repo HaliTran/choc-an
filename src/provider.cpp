@@ -1,5 +1,6 @@
 #include "Provider.h"
 #include "Member.h"
+#include "Chocoholics.h"
 
 Provider::Provider()
 {
@@ -74,10 +75,12 @@ void Provider::menu() {
                     cout<<"Error please try again"<<endl;
                 } 
             }
-
+            Chocoholics choco;
             Member* mem;
+            if (choco.getMember(mem_id, mem) == 0) {
 
-            
+            }
+
 
 
             
@@ -85,4 +88,9 @@ void Provider::menu() {
 
         }
     }while(input != '0');
+}
+
+
+void Provider::inputService(Member& mem) {
+    
 }
