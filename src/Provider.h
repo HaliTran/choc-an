@@ -23,6 +23,8 @@ class Provider : public Address{
         bool generateReport();
         Service& getService(const int id);
 
+        void menu();
+
     protected:
         vector<Service> Service_list;
         int total_consultations;

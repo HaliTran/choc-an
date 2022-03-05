@@ -1,4 +1,5 @@
 #include "Provider.h"
+#include "Member.h"
 
 Provider::Provider(){
     total_consultations = 0;
@@ -34,5 +35,48 @@ int Provider::getTotalFee() {
 }
 
 Service& Provider::getService(const int id) {
+    for (auto i : Service_list) {
+            if (i.getId() == id) return i;
+        }
+        Service temp;
+        return temp;
+}
 
+
+void Provider::menu() {
+    char input;
+    do {
+        cout<<"1 = Enter information about service provided to a member"<<endl;
+        cout<<"2 = Request Provider dictory"<<endl;
+        cout<<"0 = Exit"<<endl;
+        cout<<"Enter: ";
+        cin>>input;
+        cin.ignore(100, '\n');
+
+        if (input == '1') {
+            int mem_id;
+            cout<<"Enter Member ID number: ";
+
+            try {
+                cin>>mem_id;
+                cin.ignore(100, '\n');
+                throw mem_id;
+            } catch (const exception& e) {
+                cerr<<e.what()<<endl;
+            } catch (int mem_id) {
+                if (!(mem_id >= 100000000 && mem_id <= 999999999)) {
+                    cout<<"Error please try again"<<endl;
+                } 
+            }
+
+            Member* mem;
+
+            
+
+
+            
+        }else if (input == '2') {
+
+        }
+    }while(input != '0');
 }

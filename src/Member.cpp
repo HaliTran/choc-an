@@ -41,4 +41,6 @@ Service& Member::getService(const int id) {
     for (auto i : consult) {
         if (i.getId() == id) return i;
     }
+    Service temp;
+    return temp;
 }

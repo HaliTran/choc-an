@@ -1,19 +1,18 @@
 #include <iostream>
 #include "Address.h"
+#include "Provider.h"
+
+void clear() {
+	for (int i = 0; i < 75; i++) cout<<"\n";
+}
 
 int main(int argc, char* argv[]) {
 	string name = "Jack";
+	int id = 123456789;
 	string st = "45th";
 	string city = "Portland";
 	string state = "OR";
-
-
-	Address test;
-	test.updateUserName(name);
-
-	cout<<test.getUserName()<<endl;
-
-	name = "jake";
-	test.updateUserName(name);
-	cout<<test.getUserName()<<endl;
+	int zip = 12345;
+	Provider test(name, id, st, city, state, zip);
+	test.menu();
 }
