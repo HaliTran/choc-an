@@ -38,5 +38,7 @@ bool Member::operator==(const Member& compare) {
 
 
 Service& Member::getService(const int id) {
-    
+    for (auto i : consult) {
+        if (i.getId() == id) return i;
+    }
 }
