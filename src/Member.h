@@ -24,4 +24,6 @@ class Member : public Address{
         bool operator==(const Member& compare);
 
         bool generateReport();
+
+        Service& getService(const int id);
 };

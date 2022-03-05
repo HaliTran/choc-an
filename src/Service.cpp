@@ -3,11 +3,16 @@
 Service::Service() {
 
 }
-Service::Service(const string& user_name, const int id, const Date& date, 
-const string& svcs_name, const int svcs_code, const int cost) 
-    :Date(user_name, id, date), service_name(svcs_name), service_code(svcs_code), fee(cost){
 
-}
+Service::Service(const string& user_name, const int id, const int year, const int month, const int date, 
+        const string& svcs_name, const int svcs_code, const int cost, const string& comm) 
+        : Date(user_name, id, year, month, date){
+            service_name = svcs_name;
+            service_code = svcs_code;
+            fee = cost;
+            comment = comm;
+
+        }
 Service::Service(const Service& to_copy)
     :Date(to_copy) {
 

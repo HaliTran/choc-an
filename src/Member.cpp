@@ -35,3 +35,8 @@ bool Member::operator!=(const Member& compare) {
 bool Member::operator==(const Member& compare) {
     return Information::operator<(compare.id);
 }
+
+
+Service& Member::getService(const int id) {
+
+}
