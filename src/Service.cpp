@@ -28,31 +28,62 @@ double Service::getFee() {
     return fee;
 }
 
+string Service::getComment() {
+    return comment;
+}
+
 void Service::updateServiceName(const string& svcs_name) {
     service_name = svcs_name;
 }
 void Service::updateServiceNum(const int svcs_code) {
     service_code = svcs_code;
 }
-double Service::updateFee(const double new_fee) {
+void Service::updateFee(const double new_fee) {
     fee = new_fee;
+}
+
+void Service::updateComment(const string& new_comm) {
+    comment = new_comm;
 }
 
 
 bool Service::operator <(const Service& cp) {
+    if (year < cp.year) {
+        return true;
+    } else if (year > cp.year) {
+        return false;
+    } else if (year == cp.year) {
+        if (month < cp.month) {
+            return true;
+        } else if (month > cp.month) {
+            return false;
+        } else if (month == cp.month) {
+            if (day > cp.day) {
+                return true;
+            } else if (day > cp.day) {
+                return false;
+            }
+        }
+    }
+    return false; //means the date is the same
 }
-bool Service::operator <=(const Service&) {
-
+bool Service::operator <=(const Service& cp) {
+    if (year == cp.year && month == cp.month && day == cp.day) return true;
+    else return operator<(cp);
 }
-bool Service::operator >(const Service&) {
 
+bool Service::operator >(const Service& cp) {
+    return !(operator<=(cp));
 }
-bool Service::operator >=(const Service&) {
 
+bool Service::operator >=(const Service& cp) {
+    return !(operator<(cp));
 }
-bool Service::operator !=(const Service&) {
 
+bool Service::operator ==(const Service& cp) {
+    if (year == cp.year && month == cp.month && day == cp.day) return true;
+    else return false;
 }
-bool Service::operator ==(const Service&) {
-
+bool Service::operator !=(const Service& cp) {
+    return !(operator==(cp));
 }

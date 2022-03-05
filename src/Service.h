@@ -20,10 +20,12 @@ class Service : public Date{
         string getServiceName();
         int getServiceNumber();
         double getFee();
+        string getComment();
 
         void updateServiceName(const string&);
         void updateServiceNum(const int);
-        double updateFee(const double);
+        void updateFee(const double);
+        void updateComment(const string&);
 
 
         bool operator <(const Service&);
@@ -37,4 +39,5 @@ class Service : public Date{
         string service_name;
         int service_code;
         double fee;
+        string comment;
 };

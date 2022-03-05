@@ -1,4 +1,4 @@
-#include "provider.h"
+#include "Provider.h"
 
 Provider::Provider(){
     total_consultations = 0;
@@ -23,4 +23,12 @@ Provider::Provider(Provider& source): Address(source){
 
 Provider::~Provider(){
     Service_list.clear();
+}
+
+int Provider::getTotalConsultations() {
+    return total_consultations;
+}
+
+int Provider::getTotalFee() {
+    return total_fee;
 }

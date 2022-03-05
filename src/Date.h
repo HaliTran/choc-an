@@ -8,7 +8,8 @@
 class Date : public Information {
     public:
         Date();
-        Date(const int mo, const int day, const int yr);
+        Date(const string& user_name, const int id, const int mo, const int day, const int yr);
+        Date(const string& user_name, const int id, const Date&);
         Date(const Date&);
         ~Date();
 
@@ -20,14 +21,6 @@ class Date : public Information {
         void updateMonth(const int);
         void updateDay(const int);
         void updateYear(const int);
-
-        bool operator<(const int month, const int day, const int year);
-        bool operator<=(const int month, const int day, const int year);
-        bool operator>(const int month, const int day, const int year);
-        bool operator>=(const int month, const int day, const int year);
-        bool operator!=(const int month, const int day, const int year);
-        bool operator==(const int month, const int day, const int year);
-
 
     protected:
         int month;

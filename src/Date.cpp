@@ -15,7 +15,8 @@ Date::Date() {
 	comp_time = t;
 }
 
-Date::Date(const int mo, const int day, const int yr) :
+Date::Date(const string& user_name, const int id, const int mo, const int day, const int yr) :
+	Information(user_name, id),
 	month(mo),
 	day(day),
 	year(yr)

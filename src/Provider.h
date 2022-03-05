@@ -18,6 +18,8 @@ class Provider : public Address{
         void recordService(const Service&);
         
         Service getService(const int); 
+        int getTotalConsultations();
+        int getTotalFee();
     
         bool generateReport();
 
