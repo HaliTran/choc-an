@@ -10,7 +10,7 @@ using namespace std;
 
 class Member : public Address{
     protected:
-        vector<Service> consult;
+        vector<Service*> consult;
     public:
         Member();
         Member(const string& u_name, const int id, const string& st, const string& city, const string& state, const int zip);
@@ -26,5 +26,7 @@ class Member : public Address{
 
         bool generateReport();
 
-        Service& getService(const int id);
+        int getService(const int id, Service* ser);
+
+        void recordService(Service& ser);
 };

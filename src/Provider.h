@@ -26,13 +26,13 @@ class Provider : public Address{
         int getTotalFee();
     
         bool generateReport(int member_id);
-        Service& getService(const int id);
+        int getService(const int id, Service* ser);
 
         void menu();
 
 
     protected:
-        vector<Service> Service_list;
+        vector<Service*> Service_list;
         int total_consultations;
         int total_fee;
 

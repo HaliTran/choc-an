@@ -6,10 +6,10 @@
 class Chocoholics {
     public:
         Chocoholics();
-        int getMember(const int id, Member* mem);
+        int getMember(const int id, Member*& mem);
         // int getProvider(const int id, Provider* pro);
 
-        int getService(const int id, Service* ser);
+        int getService(const int id, Service*& ser);
     private:
         int test;
 };

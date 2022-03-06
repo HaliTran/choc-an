@@ -5,12 +5,11 @@ Chocoholics::Chocoholics() {
 
 }
 
-int Chocoholics::getMember(const int id, Member* mem) {
+int Chocoholics::getMember(const int id, Member*& mem) {
     mem = new Member("Black", 876543210, "123th", "portland", "OR", 97000);
-
     Service* ser;
 
-    getService(1234, ser);
+    // getService(1234, ser);
 
     return 0;
 
@@ -25,7 +24,7 @@ int Chocoholics::getMember(const int id, Member* mem) {
 // }
 
 
- int Chocoholics::getService(const int id, Service* ser) {
+ int Chocoholics::getService(const int id, Service*& ser) {
      string service_name = "massage";
      int service_code = 111111;
      double fee = 100;

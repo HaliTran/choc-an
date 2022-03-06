@@ -30,9 +30,9 @@ void Manager::menu(){
         cin.ignore(100,'\n');
 
         if(input == 1)
-            add_provider_member();
+            // add_provider_member();
 
-        
+        input = 0;
     } while (input != 0);
     
 }
