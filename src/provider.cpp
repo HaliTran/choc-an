@@ -1,5 +1,4 @@
 #include "Provider.h"
-#include "Member.h"
 #include "Chocoholics.h"
 
 Provider::Provider()
