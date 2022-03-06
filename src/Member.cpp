@@ -55,7 +55,12 @@ bool Member::generateReport()
 {
     //create text file, 
     ofstream myfile;
-    myfile.open ("Member_Report.txt");
+
+    string filename = "Reports/";
+    filename.append( getId() );  //filename is member_id
+    filename.append(".txt");    // append ".txt" = member_id.txt
+
+    myfile.open (filename);
     if (!myfile.is_open())
     {
         cout << "Error Generating Member Report" << endl;
