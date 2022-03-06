@@ -5,6 +5,8 @@
 #include <list>
 #include "Provider.h"
 #include "Member.h"
+#include <vector>
+using namespace std;
 
 class Manager {
     public:
@@ -12,9 +14,10 @@ class Manager {
         ~Manager();
     
         void menu();
-        
+        void add_provider_member();
+
     protected:
-        vector<Provider> provider_list;
-        vector<Member> member_list;
+        vector<Provider*> provider_list;
+        vector<Member*> member_list;
 
 };
