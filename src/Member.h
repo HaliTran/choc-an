@@ -3,6 +3,7 @@
 #include <string>
 #include <iterator>
 #include <vector>
+#include <fstream>
 #include "Service.h"
 #include "Address.h"
 using namespace std;
