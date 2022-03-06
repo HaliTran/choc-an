@@ -51,17 +51,17 @@ Service& Member::getService(const int id) {
     return temp;
 }
 
-bool generateReport()
+bool Member::generateReport()
 {
     //create text file, 
     ofstream myfile;
     myfile.open ("Member_Report.txt");
     myfile << "Member Report\n";
-
+    //string name = getUserName();
     myfile << getUserName() << endl;
 
     //to get member name go to member->addy->information
-//Member name (25 characters). 
+    //Member name (25 characters). 
    //Member number (9 digits). 
    //Member street address (25 characters). 
    //Member city (14 characters). 
