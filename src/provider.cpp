@@ -1,5 +1,4 @@
 #include "Provider.h"
-#include "Member.h"
 #include "Chocoholics.h"
 
 Provider::Provider()
@@ -81,9 +80,6 @@ void Provider::menu() {
                 //else failed input
             }
 
-
-
-            
         }else if (input == '2') {
 
         }

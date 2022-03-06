@@ -5,6 +5,7 @@
 #include <vector>
 #include "Service.h"
 #include "Address.h"
+#include "Member.h"
 using namespace std;
 
 class Provider : public Address{
