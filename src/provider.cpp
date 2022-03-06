@@ -74,11 +74,12 @@ void Provider::menu() {
                     cout<<"Error please try again"<<endl;
                 } 
             }
-            Chocoholics choco;
             Member* mem;
             if (choco.getMember(mem_id, mem) == 0) {
-                //else failed input
+
+                inputService(*mem);
             }
+            else cout<<"ID not found"<<endl;
 
         }else if (input == '2') {
 
@@ -88,7 +89,11 @@ void Provider::menu() {
 
 
 void Provider::inputService(Member& mem) {
-    
+    Service* ser;
+    choco.getService(123456, ser);
+
+
+
 }
 
 bool generateReport()

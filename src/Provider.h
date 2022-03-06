@@ -29,6 +29,7 @@ class Provider : public Address{
 
     protected:
         vector<Service> Service_list;
+        Chocoholics choco;
         int total_consultations;
         int total_fee;
 

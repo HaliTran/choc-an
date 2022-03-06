@@ -7,7 +7,7 @@ Manager::~Manager(){}
 
 //display menu option for user
 void Manager::menu(){
-    char input;
+    int input;
     do
     {
         cout<<"1 = Add member to the ChocAn Database"<<endl;
@@ -19,10 +19,15 @@ void Manager::menu(){
         cout <<"7 = Generate report about a member/provider" << endl;
         cout <<"0 = Exit" << endl;
         cout<<"Enter: ";
-        cin>>input;
-        cin.ignore(100, '\n');
-
-    } while (input != '0');
+        if(!(cin >> input))
+        {
+            cout << "Your input was invalid, please try again!" << endl << endl;
+            cin.clear();
+            cin.ignore(100,'\n');
+            continue;
+        }
+        
+    } while (input != 0);
     
 }
 
