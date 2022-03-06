@@ -59,7 +59,7 @@ bool Member::generateReport()
     if (!myfile.is_open())
     {
         cout << "Error Generating Member Report" << endl;
-        return 1;
+        return true;
     }
     //else open
     myfile << "Member Report" << endl;
@@ -69,17 +69,15 @@ bool Member::generateReport()
     myfile << getCity() << endl;        //Member city (14 characters). 
     myfile << getState() << endl;       //Member state (2 letters). 
     myfile << getZipCode() << endl;     //Member zip code (5 digits).
-        
-    for (auto i = consult.begin(); i != consult.end(); ++i)
+
+    for (auto i : consult)
     {
         //Date of service (MM-DD-YYYY).
-        myfile << i->getMonth() << i->getDay() << i->getYear() << i->getCompTime() << endl;
-        myfile << i->getUserName() << endl;     //Provider name (25 characters)
-        myfile << i->getServiceName() << endl;   //Service name (20 characters). 
+        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
+        myfile << i.getUserName() << endl;     //Provider name (25 characters)
+        myfile << i..getServiceName() << endl;   //Service name (20 characters). 
     }
-
-    
     myfile.close(); 
 
-
+    return false;
 }
