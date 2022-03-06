@@ -12,6 +12,7 @@ class Manager {
         ~Manager();
     
         void menu();
+        
     protected:
         vector<Provider> provider_list;
         vector<Member> member_list;
