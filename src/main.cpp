@@ -14,9 +14,23 @@ int main(int argc, char* argv[]) {
 	string city = "Portland";
 	string state = "OR";
 	int zip = 12345;
+<<<<<<< HEAD
 	Provider test(name, id, st, city, state, zip);
 	test.menu();
 	// Manager test2;
 	// test2.menu();
+=======
+<<<<<<< HEAD
+	Provider test(name, id, st, city, state, zip);
+	test.menu();
+
+	//manager tester
+	
+=======
+	//Provider test(name, id, st, city, state, zip);
+	Manager test2;
+	test2.menu();
+>>>>>>> da7ddade5d42ea23f8cbd25173b65de6b51a49a4
 	//test.menu();
+>>>>>>> 9be4b7b42eadab55913b30d075de7693925f501f
 }

@@ -56,48 +56,28 @@ bool Member::generateReport()
     //create text file, 
     ofstream myfile;
     myfile.open ("Member_Report.txt");
-    myfile << "Member Report\n";
-    //string name = getUserName();
-    myfile << getUserName() << endl;
+    if (!myfile.is_open())
+    {
+        cout << "Error Generating Member Report" << endl;
+        return true;
+    }
+    //else open
+    myfile << "Member Report" << endl;
+    myfile << getUserName() << endl;    //Member name (25 characters). 
+    myfile << getId() << endl;          //Member number (9 digits).
+    myfile << getStreet() << endl;      //Member street address (25 characters)
+    myfile << getCity() << endl;        //Member city (14 characters). 
+    myfile << getState() << endl;       //Member state (2 letters). 
+    myfile << getZipCode() << endl;     //Member zip code (5 digits).
 
-    //to get member name go to member->addy->information
-    //Member name (25 characters). 
-   //Member number (9 digits). 
-   //Member street address (25 characters). 
-   //Member city (14 characters). 
-   //Member state (2 letters). 
-   //Member zip code (5 digits). 
-   //For each service provided, the following details are required: 
-   //Date of service (MM-DD-YYYY). 
-   //Provider name (25 characters). 
-   //Service name (20 characters). 
-
-    
-    // Address class contain
-    /*
-        string street;
-        string city;
-        string state;
-        int zip_code;
-
-    //Member class has service vector contains
-        string service_name;
-        int service_code;
-        double fee;
-        string comment;
-    // Date includes
-        int month;
-        int day;
-        int year;
-        time_t comp_time;
-
-    */
+    for (auto i : consult)
+    {
+        //Date of service (MM-DD-YYYY).
+        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
+        myfile << i.getUserName() << endl;     //Provider name (25 characters)
+        myfile << i..getServiceName() << endl;   //Service name (20 characters). 
+    }
     myfile.close(); 
 
-    //in member vector, service = provider name
-    
-    
-
-
-
+    return false;
 }
