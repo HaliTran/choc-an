@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Address.h"
 #include "Provider.h"
+#include "Manager.h"
 
 void clear() {
 	for (int i = 0; i < 75; i++) cout<<"\n";
@@ -13,6 +14,8 @@ int main(int argc, char* argv[]) {
 	string city = "Portland";
 	string state = "OR";
 	int zip = 12345;
-	Provider test(name, id, st, city, state, zip);
-	test.menu();
+	//Provider test(name, id, st, city, state, zip);
+	Manager test2;
+	test2.menu();
+	//test.menu();
 }
