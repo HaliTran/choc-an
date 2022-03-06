@@ -21,10 +21,11 @@ class Provider : public Address{
         int getTotalConsultations();
         int getTotalFee();
     
-        bool generateReport();
+        bool generateReport(int member_id);
         Service& getService(const int id);
 
         void menu();
+
 
     protected:
         vector<Service> Service_list;

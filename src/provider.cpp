@@ -77,12 +77,9 @@ void Provider::menu() {
             Chocoholics choco;
             Member* mem;
             if (choco.getMember(mem_id, mem) == 0) {
-
+                //else failed input
             }
 
-
-
-            
         }else if (input == '2') {
 
         }
@@ -92,4 +89,10 @@ void Provider::menu() {
 
 void Provider::inputService(Member& mem) {
     
+}
+
+bool generateReport()
+{
+
+    return true;
 }
