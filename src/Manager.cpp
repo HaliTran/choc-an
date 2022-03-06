@@ -26,8 +26,53 @@ void Manager::menu(){
             cin.ignore(100,'\n');
             continue;
         }
+
+        cin.ignore(100,'\n');
+
+        if(input == 1)
+            add_provider_member();
+        else if(input == 2)
+            display_member();
+
         
     } while (input != 0);
     
 }
+
+void Manager::add_provider_member()
+{
+    string name;
+    int id;
+    string st;
+    string city;
+    string state;
+    int zip;
+
+    //getting user input regarding a member
+    cout << "Member's name: ";
+    getline(cin,name,'\n');
+    
+    cout << "Member's ID number: ";
+    cin >> id;
+    cin.ignore();
+
+    cout << "Member's street address: ";
+    getline(cin,st,'\n'); 
+    
+    cout << "Member's city: ";
+    getline(cin,city,'\n');
+
+    cout << "Member's state: ";
+    getline(cin,state,'\n');
+
+    cout << "Member's zip code: ";
+    cin >> zip;
+    cin.ignore(100,'\n');
+
+    //creating member object
+    Member * a_mem = new Member(name, id, st, city, state, zip);
+    member_list.push_back(a_mem);
+    return;
+}
+
 
