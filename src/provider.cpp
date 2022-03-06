@@ -146,15 +146,37 @@ void Provider::inputService(Member& mem) {
 
 bool generateReport()
 {
-    //create text file, 
     ofstream myfile;
-    myfile.open ("Member_Report.txt");
+
+    string filename = "Reports/";
+    filename.append( getId() );  //filename is provider_id
+    filename.append(".txt");    // append ".txt" = provider_id.txt
+
+    myfile.open (filename);
     if (!myfile.is_open())
     {
-        cout << "Error Generating Member Report" << endl;
+        cout << "Error Generating Provider Report" << endl;
         return true;
     }
     //else open
+
+    //Provider name (25 characters). 
+    //Provider number (9 digits). 
+    //Provider street address (25 characters). 
+    //Provider city (14 characters). 
+    //Provider state (2 letters). 
+    //Provider zip code (5 digits). 
+    //For each service provided, the following details are required: 
+    //Date of service (MM-DD-YYYY). 
+    //Date and time data were received by the computer (MM-DD-YYYY 
+
+    //Member name (25 characters). 
+    //Member number (9 digits). 
+    //Service code (6 digits). 
+    //Fee to be paid (up to $999.99). 
+    //Total number of consultations with members (3 digits). 
+    //Total fee for the week (up to $99,999.99). 
+    
     myfile << "Member Report" << endl;
     myfile << getUserName() << endl;    //Member name (25 characters). 
     myfile << getId() << endl;          //Member number (9 digits).
@@ -171,6 +193,9 @@ bool generateReport()
         myfile << i..getServiceName() << endl;   //Service name (20 characters). 
     }
     myfile.close(); 
-    
+
     return false;
+
+
+
 }
