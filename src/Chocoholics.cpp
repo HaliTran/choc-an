@@ -15,5 +15,15 @@ int Chocoholics::getProvider(const int id, Provider* pro) {
 
 
  int Chocoholics::getService(const int id, Service* ser) {
-     
+     string service_name = "massage";
+     int service_code = 111111;
+     double fee = 100;
+
+     ser = new Service();
+
+     ser -> updateServiceName(service_name);
+     ser -> updateServiceNum(service_code);
+     ser -> updateFee(fee);
+
+     return 0;
  }
