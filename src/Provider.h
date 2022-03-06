@@ -6,6 +6,10 @@
 #include "Service.h"
 #include "Address.h"
 #include "Member.h"
+#include "Provider.h"
+#include "Chocoholics.h"
+
+
 using namespace std;
 
 class Provider : public Address{
@@ -29,7 +33,6 @@ class Provider : public Address{
 
     protected:
         vector<Service> Service_list;
-        Chocoholics choco;
         int total_consultations;
         int total_fee;
 

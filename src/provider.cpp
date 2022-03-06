@@ -1,5 +1,5 @@
 #include "Provider.h"
-#include "Chocoholics.h"
+
 
 Provider::Provider()
 {
@@ -74,6 +74,8 @@ void Provider::menu() {
                     cout<<"Error please try again"<<endl;
                 } 
             }
+            Chocoholics choco;
+
             Member* mem;
             if (choco.getMember(mem_id, mem) == 0) {
 
@@ -89,8 +91,54 @@ void Provider::menu() {
 
 
 void Provider::inputService(Member& mem) {
-    Service* ser;
-    choco.getService(123456, ser);
+    Service* ser_data;
+    // choco.getService(123456, ser_data);
+    int service_code;
+    int service_year;
+    int service_month;
+    int service_day;
+    int input;
+    do {
+        cout<<"Please input Service code: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: CODE"<<endl;
+            continue;
+        } else {
+            cin.ignore(100, '\n');
+            service_code = input;
+        }
+
+        cout<<"Please input Month: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: MONTH"<<endl;
+            continue;
+        }else {
+            cin.ignore(100, '\n');
+            service_month = input;
+        }
+
+        cout<<"Please input day: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: DAY"<<endl;
+            continue;
+        }else {
+            cin.ignore(100, '\n');
+            service_day = input;
+        }
+
+        cout<<"Please input Year: ";
+        cin>>service_year;
+        cin.ignore(100, '\n');
+        input = 0;
+    } while(input != 0);
+
+    cout<<"Service code: "<<service_code<<endl;
+    cout<<"Date: "<<service_month<<"/"<<service_day<<"/"<<service_year<<endl;
+    Service member_ser;
+    Service provider_ser;
 
 
 
