@@ -15,4 +15,7 @@ int main(int argc, char* argv[]) {
 	int zip = 12345;
 	Provider test(name, id, st, city, state, zip);
 	test.menu();
+
+	//manager tester
+	
 }
