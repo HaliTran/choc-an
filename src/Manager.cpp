@@ -31,15 +31,14 @@ void Manager::menu(){
 
         if(input == 1)
             add_provider_member();
-        else if(input == 2)
-            display_member();
 
         
     } while (input != 0);
     
 }
 
-void Manager::add_provider_member()
+//function to add member to the ChocAn Database
+void Manager::add_member()
 {
     string name;
     int id;
@@ -75,4 +74,39 @@ void Manager::add_provider_member()
     return;
 }
 
+//function to add a provider to the ChocAn database
+void Manager::add_provider()
+{
+    string name;
+    int id;
+    string st;
+    string city;
+    string state;
+    int zip;
 
+    //getting user input regarding a member
+    cout << "Provider's name: ";
+    getline(cin,name,'\n');
+    
+    cout << "Provider's ID number: ";
+    cin >> id;
+    cin.ignore();
+
+    cout << "Provider's street address: ";
+    getline(cin,st,'\n'); 
+    
+    cout << "Provider's city: ";
+    getline(cin,city,'\n');
+
+    cout << "Provider's state: ";
+    getline(cin,state,'\n');
+
+    cout << "Provider's zip code: ";
+    cin >> zip;
+    cin.ignore(100,'\n');
+
+    //creating member object
+    Provider * a_pro = new Provider(name, id, st, city, state, zip);
+    provider_list.push_back(a_pro);
+    return;
+}
