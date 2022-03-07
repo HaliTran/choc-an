@@ -17,6 +17,7 @@ class Manager {
         void add_member();
         void add_provider();
         void update_member();
+        void update_provider();
 
     protected:
         vector<Provider*> provider_list;

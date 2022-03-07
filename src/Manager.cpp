@@ -37,14 +37,114 @@ void Manager::menu(){
         //calls appropriate function based on menu choice
         if(input == 1)
             add_member();
+        else if(input == 2)
+            add_provider();
         else if(input == 5)
             update_member();
+        else if(input == 6)
+            update_provider();
 
     } while (input != 0);
     
     cout << "Have a great day!" << endl;
     exit(EXIT_SUCCESS);
 }
+
+//function to update information about a provider
+void Manager::update_provider()
+{
+    int id_number;
+    cout << "What is the ID number of the provider to update (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    int vector_size = provider_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    {
+        //there was a matching member ID
+        if(provider_list[i]->getId() == id_number)
+        {
+
+            int input;
+            cout << '\n';
+            cout << "--------------" << endl;
+            cout << "1 = Username" << endl;
+            cout << "2 = ID number" << endl;
+            cout << "3 = Street" << endl;
+            cout << "4 = City" << endl;
+            cout << "5 = State" << endl;
+            cout << "6 = Zip Code" << endl;
+            cout << "--------------" << endl;
+            cout << "Which information of this provider would you like to update: ";
+        
+            //getting user input and checking if valid
+            //re-prompt if necessary
+            //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
+            while(!(cin >> input))
+            {
+                cout << "Your input was invalid, please try again!" << endl;
+                cout << "Please enter valid input: ";
+                cin.clear();
+                cin.ignore(100,'\n');
+            }
+
+            cin.ignore(100,'\n');
+            //updating the provider information
+            if(input == 1)
+            {
+                string name;
+                cout << "Providers's new name: ";
+                getline(cin,name,'\n');
+                provider_list[i]->updateUserName(name);
+            }
+            else if(input == 2)
+            {
+                int id;
+                cout << "Provider's new ID number: ";
+                cin >> id;
+                cin.ignore();
+                provider_list[i]->updateId(id);
+            }
+            else if(input == 3)
+            {
+                string st;
+                cout << "Provider's new street address: ";
+                getline(cin,st,'\n'); 
+                provider_list[i]->updateStreet(st);
+            }
+            else if(input == 4)
+            {
+                string city;
+                cout << "Provider's new city: ";
+                getline(cin,city,'\n');
+                provider_list[i]->updateCity(city);
+            }
+            else if(input == 5)
+            {
+                string state;
+                cout << "Proivder's new state: ";
+                getline(cin,state,'\n');
+                provider_list[i]->updateState(state);
+            }
+            else
+            {
+                int zip;
+                cout << "Provider's new zip code: ";
+                cin >> zip;
+                cin.ignore(100,'\n');
+                provider_list[i]->updateZipCode(zip);
+            }
+
+            cout << "Information updated successfully!" << endl << endl;
+            return;
+        }
+
+    }
+    //provider ID was not valid
+    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+    return;
+}
+
 
 //function to update information about a member
 void Manager::update_member()
