@@ -39,6 +39,10 @@ void Manager::menu(){
             add_member();
         else if(input == 2)
             add_provider();
+        else if(input == 3)
+            delete_member();
+        else if(input == 4)
+            delete_provider();
         else if(input == 5)
             update_member();
         else if(input == 6)
@@ -48,6 +52,58 @@ void Manager::menu(){
     
     cout << "Have a great day!" << endl;
     exit(EXIT_SUCCESS);
+}
+
+
+//function to delete a provider
+void Manager::delete_provider()
+{
+    int id_number;
+    cout << "What is the ID number of the provider to delete (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    int vector_size = provider_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    { 
+        //found a match, delete from the database
+        if(provider_list[i]->getId() == id_number)
+        {
+            delete provider_list[i];
+            provider_list.erase(provider_list.begin() + i);
+            cout << "The provider has been successfully removed from the ChocAn Database." << endl << endl;
+            return;
+        }
+    }
+    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+    return;
+
+}
+
+
+//function to delete a member
+void Manager::delete_member()
+{
+    int id_number;
+    cout << "What is the ID number of the member to delete (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    int vector_size = member_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    { 
+        //found a match, delete from the database
+        if(member_list[i]->getId() == id_number)
+        {
+            delete member_list[i];
+            member_list.erase(member_list.begin() + i);
+            cout << "The member has been successfully removed from the ChocAn Database." << endl << endl;
+            return;
+        }
+    }
+    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+    return;
+
 }
 
 //function to update information about a provider
