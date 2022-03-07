@@ -24,9 +24,9 @@ int Chocoholics::getMember(const int id, Member*& mem) {
 // }
 
 
- int Chocoholics::getService(const int id, Service*& ser) {
+ int Chocoholics::getServiceData(const int id, Service*& ser) {
      string service_name = "massage";
-     int service_code = 111111;
+     int service_code = id;
      double fee = 100;
 
      ser = new Service();

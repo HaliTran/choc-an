@@ -26,7 +26,7 @@ class Provider : public Address{
         int getTotalFee();
     
         bool generateReport(int member_id);
-        int getService(const int id, Service* ser);
+        int getService(const int id, Service*& ser);
 
         void menu();
 
@@ -36,7 +36,9 @@ class Provider : public Address{
         int total_consultations;
         int total_fee;
 
-        void inputService(Member& mem);
+        void validateService(Member& mem); //prompts the provider for data
+        void inputService(Member& mem, Service*& ser_data, int service_code, int service_year, 
+        int service_month, int service_day, char* service_comment); //data gets stored
 
 
 };
