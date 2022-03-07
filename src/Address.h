@@ -18,7 +18,7 @@ class Address : public Information{
         string getState();
         int getZipCode();
 
-        void updateStreet(const int);
+        void updateStreet(const string&);
         void updateCity(const string&);
         void updateState(const string&);
         void updateZipCode(const int);

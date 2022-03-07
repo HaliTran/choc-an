@@ -10,6 +10,7 @@ void Manager::menu(){
     int input;
     do
     {
+        cout << "------------------------------------------" << endl;
         cout<<"1 = Add member to the ChocAn Database"<<endl;
         cout<<"2 = Add provider to the ChocAn Database"<<endl;
         cout<<"3 = Delete member from the ChocAn Database"<<endl;
@@ -18,7 +19,11 @@ void Manager::menu(){
         cout <<"6 = Update provider information" << endl;
         cout <<"7 = Generate report about a member/provider" << endl;
         cout <<"0 = Exit" << endl;
-        cout<<"Enter: ";
+        cout << "--------------------------------------------" << endl;
+        cout<<"Please enter a number corresponding to the task you'd like to execute: ";
+        
+        //getting user input and checking if valid
+        //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
         if(!(cin >> input))
         {
             cout << "Your input was invalid, please try again!" << endl << endl;
@@ -29,12 +34,112 @@ void Manager::menu(){
 
         cin.ignore(100,'\n');
 
+        //calls appropriate function based on menu choice
         if(input == 1)
-            // add_provider_member();
+            add_member();
+        else if(input == 5)
+            update_member();
 
-        input = 0;
     } while (input != 0);
     
+    cout << "Have a great day!" << endl;
+    exit(EXIT_SUCCESS);
+}
+
+//function to update information about a member
+void Manager::update_member()
+{
+    int id_number;
+    cout << "What is the ID number of the member to update (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    int vector_size = member_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    {
+        //there was a matching member ID
+        if(member_list[i]->getId() == id_number)
+        {
+
+            int input;
+            cout << '\n';
+            cout << "--------------" << endl;
+            cout << "1 = Username" << endl;
+            cout << "2 = ID number" << endl;
+            cout << "3 = Street" << endl;
+            cout << "4 = City" << endl;
+            cout << "5 = State" << endl;
+            cout << "6 = Zip Code" << endl;
+            cout << "--------------" << endl;
+            cout << "Which information of this member would you like to update: ";
+        
+            //getting user input and checking if valid
+            //re-prompt if necessary
+            //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
+            while(!(cin >> input))
+            {
+                cout << "Your input was invalid, please try again!" << endl;
+                cout << "Please enter valid input: ";
+                cin.clear();
+                cin.ignore(100,'\n');
+            }
+
+            cin.ignore(100,'\n');
+            //updating the member information
+            if(input == 1)
+            {
+                string name;
+                cout << "Member's new name: ";
+                getline(cin,name,'\n');
+                member_list[i]->updateUserName(name);
+            }
+            else if(input == 2)
+            {
+                int id;
+                cout << "Member's new ID number: ";
+                cin >> id;
+                cin.ignore();
+                member_list[i]->updateId(id);
+            }
+            else if(input == 3)
+            {
+                string st;
+                cout << "Member's new street address: ";
+                getline(cin,st,'\n'); 
+                member_list[i]->updateStreet(st);
+            }
+            else if(input == 4)
+            {
+                string city;
+                cout << "Member's new city: ";
+                getline(cin,city,'\n');
+                member_list[i]->updateCity(city);
+            }
+            else if(input == 5)
+            {
+                string state;
+                cout << "Member's new state: ";
+                getline(cin,state,'\n');
+                member_list[i]->updateState(state);
+            }
+            else
+            {
+                int zip;
+                cout << "Member's new zip code: ";
+                cin >> zip;
+                cin.ignore(100,'\n');
+                member_list[i]->updateZipCode(zip);
+            }
+
+            cout << "Information updated successfully!" << endl << endl;
+            return;
+            
+        }
+
+    }
+    //member ID was not valid
+    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+    return;
 }
 
 //function to add member to the ChocAn Database
@@ -71,6 +176,7 @@ void Manager::add_member()
     //creating member object
     Member * a_mem = new Member(name, id, st, city, state, zip);
     member_list.push_back(a_mem);
+    cout <<"The member has been added to the ChocAn database!" << endl << endl;
     return;
 }
 
@@ -108,5 +214,6 @@ void Manager::add_provider()
     //creating member object
     Provider * a_pro = new Provider(name, id, st, city, state, zip);
     provider_list.push_back(a_pro);
+    cout <<"The provider has been added to the ChocAn database!" << endl << endl;
     return;
 }

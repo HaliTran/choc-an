@@ -29,7 +29,7 @@ int Address::getZipCode()
 {
     return zip_code;  
 }
-void Address::updateStreet(const int new_street)
+void Address::updateStreet(const string& new_street)
 {
     street = new_street;
 }

@@ -17,4 +17,7 @@ int main(int argc, char* argv[]) {
 	Manager test2;
 	test2.menu();
 
+	return 0;
+}
+
 
