@@ -230,56 +230,53 @@ void Provider::inputService(Member& mem, Service*& ser_data, int service_code, i
 
 bool generateReport()
 {
-    // ofstream myfile;
+    ofstream myfile;
 
-    // string filename = "Reports/";
-    // filename.append( getId() );  //filename is provider_id
-    // filename.append(".txt");    // append ".txt" = provider_id.txt
+    string filename = "Reports/";
+    filename.append( getId() );  //filename is provider_id
+    filename.append(".txt");    // append ".txt" = provider_id.txt
 
-    // myfile.open (filename);
-    // if (!myfile.is_open())
-    // {
-    //     cout << "Error Generating Provider Report" << endl;
-    //     return true;
-    // }
-    // //else open
+    myfile.open (filename);
+    if (!myfile.is_open())
+    {
+        cout << "Error Generating Provider Report" << endl;
+        return true;
+    }
+    //else open
 
-    // //Provider name (25 characters). 
-    // //Provider number (9 digits). 
-    // //Provider street address (25 characters). 
-    // //Provider city (14 characters). 
-    // //Provider state (2 letters). 
-    // //Provider zip code (5 digits). 
-    // //For each service provided, the following details are required: 
-    // //Date of service (MM-DD-YYYY). 
-    // //Date and time data were received by the computer (MM-DD-YYYY 
+    //Provider name (25 characters). 
+    //Provider number (9 digits). 
+    //Provider street address (25 characters). 
+    //Provider city (14 characters). 
+    //Provider state (2 letters). 
+    //Provider zip code (5 digits). 
+    //For each service provided, the following details are required: 
+    //Date of service (MM-DD-YYYY). 
+    //Date and time data were received by the computer (MM-DD-YYYY 
 
-    // //Member name (25 characters). 
-    // //Member number (9 digits). 
-    // //Service code (6 digits). 
-    // //Fee to be paid (up to $999.99). 
-    // //Total number of consultations with members (3 digits). 
-    // //Total fee for the week (up to $99,999.99). 
+    //Member name (25 characters). 
+    //Member number (9 digits). 
+    //Service code (6 digits). 
+    //Fee to be paid (up to $999.99). 
+    //Total number of consultations with members (3 digits). 
+    //Total fee for the week (up to $99,999.99). 
     
-    // myfile << "Member Report" << endl;
-    // myfile << getUserName() << endl;    //Member name (25 characters). 
-    // myfile << getId() << endl;          //Member number (9 digits).
-    // myfile << getStreet() << endl;      //Member street address (25 characters)
-    // myfile << getCity() << endl;        //Member city (14 characters). 
-    // myfile << getState() << endl;       //Member state (2 letters). 
-    // myfile << getZipCode() << endl;     //Member zip code (5 digits).
+    myfile << "Member Report" << endl;
+    myfile << getUserName() << endl;    //Member name (25 characters). 
+    myfile << getId() << endl;          //Member number (9 digits).
+    myfile << getStreet() << endl;      //Member street address (25 characters)
+    myfile << getCity() << endl;        //Member city (14 characters). 
+    myfile << getState() << endl;       //Member state (2 letters). 
+    myfile << getZipCode() << endl;     //Member zip code (5 digits).
 
-    // for (auto i : consult)
-    // {
-    //     //Date of service (MM-DD-YYYY).
-    //     myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
-    //     myfile << i.getUserName() << endl;     //Provider name (25 characters)
-    //     myfile << i..getServiceName() << endl;   //Service name (20 characters). 
-    // }
-    // myfile.close(); 
+    for (auto i : consult)
+    {
+        //Date of service (MM-DD-YYYY).
+        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
+        myfile << i.getUserName() << endl;     //Provider name (25 characters)
+        myfile << i..getServiceName() << endl;   //Service name (20 characters). 
+    }
+    myfile.close(); 
 
-    // return false;
-
-
-
+    return false;
 }
