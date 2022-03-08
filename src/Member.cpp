@@ -68,6 +68,7 @@ bool Member::generateReport()
 
     cout<<"Filename: "<<filename<<endl;
 
+
     myfile.open (filename);
     if (!myfile.is_open())
     {
@@ -75,7 +76,6 @@ bool Member::generateReport()
         return true;
     }
     //else open
-
     myfile<<"    Chocoholics Anonymous Member Report    "<<endl;
     myfile<<"\n"<<endl;
     myfile<<getUserName() <<endl;

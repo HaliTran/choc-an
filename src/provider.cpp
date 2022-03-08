@@ -246,6 +246,7 @@ bool Provider::generateReport()
     }
     //else open
 
+<<<<<<< HEAD
     //Provider name (25 characters). 
     //Provider number (9 digits). 
     //Provider street address (25 characters). 
@@ -297,6 +298,31 @@ bool Provider::generateReport()
         myfile<<"    "<<"Fee: "<<i->getFee()<<endl;
     }
 	
+=======
+    myfile << "Provider Report" << endl;    //Provider name (25 characters)
+    myfile << "Provider Report" << endl;    //Provider number (9 digits).
+    myfile << getStreet()       << endl;    //Provider street address (25 characters). 
+    myfile << getCity()         << endl;    //Provider city (14 characters). 
+    myfile << getState()        << endl;   //Provider state (2 letters). 
+    myfile << getZipCode()      << endl;   //Provider zip code (5 digits). 
+        
+    //vector<Service*> Service_list;
+    for (auto i : Service_list)
+    {
+        //For each service provided, the following details are required: 
+        //IN SERVICE IN DATE CLASS//Date of service (MM-DD-YYYY).
+        myfile << i->getMonth() << " : "<< i->getDay() << " : " << i->getYear() 
+                                << " : "<< i->getCompTime() << endl;
+        myfile << i->getUserName()      << endl;   //Member name (25 characters). 
+        myfile << i->getId()            << endl;   //Member number (9 digits). 
+        myfile << i->getServiceNumber() << endl;   //Service code (6 digits). 
+        myfile << i->getFee()           << endl;   //Fee to be paid (up to $999.99). 
+        
+        //Total number of consultations with members (3 digits). 
+        //Total fee for the week (up to $99,999.99). 
+    }
+    
+>>>>>>> a65fe8f47ca74191bc49ce9cd5397c3c79c3665a
     myfile.close(); 
 
     return false;
