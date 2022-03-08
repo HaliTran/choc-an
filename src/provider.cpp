@@ -258,10 +258,10 @@ bool generateReport()
         //IN SERVICE IN DATE CLASS//Date of service (MM-DD-YYYY).
         myfile << i->getMonth() << " : "<< i->getDay() << " : " i->getYear() 
                                     " : "<< i->getCompTime() << endl;
-        myfile << getUserName()      << endl;   //Member name (25 characters). 
-        myfile << getId()            << endl;   //Member number (9 digits). 
-        myfile << getServiceNumber() << endl;   //Service code (6 digits). 
-        myfile << getFee()           << endl;   //Fee to be paid (up to $999.99).
+        myfile << i->getUserName()      << endl;   //Member name (25 characters). 
+        myfile << i->getId()            << endl;   //Member number (9 digits). 
+        myfile << i->getServiceNumber() << endl;   //Service code (6 digits). 
+        myfile << i->getFee()           << endl;   //Fee to be paid (up to $999.99).
         
         //Total number of consultations with members (3 digits). 
         //Total fee for the week (up to $99,999.99). 
