@@ -54,7 +54,7 @@ void Manager::menu(){
         else if(input == 8)
             generate_provider_report();
         else if(input == -1) {
-            if (provider_list.size() != 0) {
+            if (provider_list.size() == 0) {
                 cout<<"Empty list"<<endl;
             } else provider_list[0]->menu();
         }

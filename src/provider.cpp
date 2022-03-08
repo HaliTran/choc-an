@@ -230,15 +230,29 @@ void Provider::inputService(Member& mem, Service*& ser_data, int service_code, i
 
 bool Provider::generateReport()
 {
+    time_t now = time(NULL);
+    tm *ltm = localtime(&now);
+
+    char* date;
+    int temp_year = (1900 + ltm->tm_year);
+    int temp_month = (1 + ltm->tm_mon);
+    int temp_day = (ltm->tm_mday);
+
+    string filename = getUserName();
+    filename += "_";
+    filename +=to_string(temp_month);
+    filename += "_";
+    filename +=to_string(temp_day);
+    filename += "_";
+    filename +=to_string(temp_year);
+    filename +=".txt";
+
+ 
+    cout<<"*********************Filename: "<<filename<<endl;
+
     ofstream myfile;
-
-    string filename = "Reports/";
-    filename += to_string(getId());  //filename is provider_id
-    filename.append(".txt");    // append ".txt" = provider_id.txt
-
-    cout<<"Filename: "<<filename<<endl;
     
-    myfile.open (filename);
+    myfile.open (filename.c_str());
     if (!myfile.is_open())
     {
         cout << "Error Generating Provider Report" << endl;
@@ -290,7 +304,7 @@ bool Provider::generateReport()
         time (&c_time);
 	    ct = localtime (&c_time);
         myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;
-        myfile<<"    "<<"Date and time received by computer: "<<ct<<endl;
+        myfile<<"    "<<"Date and time received by computer: "<<ct->tm_mon<<"-"<<ct->tm_mday<<"-"<<ct->tm_year<<" "<<ct->tm_hour<<":"<<ct->tm_min<<":"<<ct->tm_sec<<endl;
         myfile<<"    "<<"Member name: "<<i->getUserName()<<endl;
         myfile<<"    "<<"Member id: "<<i->getId()<<endl;
         myfile<<"    "<<"Service code: "<<i->getServiceNumber()<<endl;
