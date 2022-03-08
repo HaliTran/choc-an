@@ -232,9 +232,9 @@ bool generateReport()
 {
     ofstream myfile;
 
-    string filename = "Reports/";
-    filename.append( getId() );  //filename is provider_id
-    filename.append(".txt");    // append ".txt" = provider_id.txt
+    string filename = "Reports/Provider_report.txt";
+    //filename.append( getId() );  //filename is provider_id
+    //filename.append(".txt");    // append ".txt" = provider_id.txt
 
     myfile.open (filename);
     if (!myfile.is_open())
@@ -256,12 +256,12 @@ bool generateReport()
     {
         //For each service provided, the following details are required: 
         //IN SERVICE IN DATE CLASS//Date of service (MM-DD-YYYY).
-        myfile << i->getMonth() << " : "<< i->getDay() << " : " i->getYear() 
-                                    " : "<< i->getCompTime() << endl;
+        myfile << i->getMonth() << " : "<< i->getDay() << " : " << i->getYear() 
+                                << " : "<< i->getCompTime() << endl;
         myfile << i->getUserName()      << endl;   //Member name (25 characters). 
         myfile << i->getId()            << endl;   //Member number (9 digits). 
         myfile << i->getServiceNumber() << endl;   //Service code (6 digits). 
-        myfile << i->getFee()           << endl;   //Fee to be paid (up to $999.99).
+        myfile << i->getFee()           << endl;   //Fee to be paid (up to $999.99). 
         
         //Total number of consultations with members (3 digits). 
         //Total fee for the week (up to $99,999.99). 
