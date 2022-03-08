@@ -1,5 +1,5 @@
 #include "Provider.h"
-#include "Chocoholics.h"
+
 
 Provider::Provider()
 {
@@ -40,22 +40,32 @@ int Provider::getTotalFee()
     return total_fee;
 }
 
-Service& Provider::getService(const int id) {
+int Provider::getService(const int id, Service*& ser) {
+    using namespace std;
     for (auto i : Service_list) {
-            if (i.getId() == id) return i;
+            cout<<"Service ID: "<<i->getServiceNumber()<<endl;
+            cout<<"Look ID: "<<id<<endl;
+            if (i->getServiceNumber() == id) {
+                ser = i;
+                return 0;
+            }
         }
-        Service temp;
-        return temp;
+    return 1;
 }
 
 
 void Provider::menu() {
+    using namespace std;
+
     char input;
     do {
+        cout << "------------------------------------------" << endl;
         cout<<"1 = Enter information about service provided to a member"<<endl;
         cout<<"2 = Request Provider dictory"<<endl;
         cout<<"0 = Exit"<<endl;
-        cout<<"Enter: ";
+        cout << "------------------------------------------" << endl;
+        cout<<"Please enter a number corresponding to the task you'd like to execute: ";
+
         cin>>input;
         cin.ignore(100, '\n');
 
@@ -63,21 +73,14 @@ void Provider::menu() {
             int mem_id;
             cout<<"Enter Member ID number: ";
 
-            try {
-                cin>>mem_id;
-                cin.ignore(100, '\n');
-                throw mem_id;
-            } catch (const exception& e) {
-                cerr<<e.what()<<endl;
-            } catch (int mem_id) {
-                if (!(mem_id >= 100000000 && mem_id <= 999999999)) {
-                    cout<<"Error please try again"<<endl;
-                } 
-            }
+            if (!(cin>>mem_id)) {
+                cout<<"Error not a number, please input a number"<<endl;
+                continue;
+            } 
+            Chocoholics choco;
             Member* mem;
             if (choco.getMember(mem_id, mem) == 0) {
-
-                inputService(*mem);
+                validateService(*mem);
             }
             else cout<<"ID not found"<<endl;
 
@@ -88,12 +91,141 @@ void Provider::menu() {
 }
 
 
-void Provider::inputService(Member& mem) {
-    Service* ser;
-    choco.getService(123456, ser);
+void Provider::validateService(Member& mem) {
+    using namespace std;
+    char service_comment[100];
+    int service_code;
+    int service_year;
+    int service_month;
+    int service_day;
+    int input;
+
+    cout << "------------------------------------------" << endl;
+    cout<<"Please input Service code: ";
+        if (!(cin >> service_code)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: CODE"<<endl;
+            return;
+        } else {
+            cin.ignore(100, '\n');
+        }
+
+    Chocoholics choco;
+    Service* ser_data;
+    //returns only service number, service name, and service fee
+    if (choco.getServiceData(service_code, ser_data) == 0) { 
+        cout<<"The service name is: "<<ser_data->getServiceName()<<endl;
+        cout<<"Is this correct (y/n): ";
+        char flag;
+        cin>>flag;
+        cin.ignore(100, '\n');
+
+        if (!(flag == 'Y' || flag == 'y')) {
+            cout<<"Please try again"<<endl;
+            return;
+        } 
+    }
+    cout << "------------------------------------------" << endl;
+    do {
+        input = 1;
+        cout<<"Please input Month: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: NOT A NUMBER"<<endl;
+        }else if(input <= 0 || input > 12) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: "<<input<<" MONTH NOT POSSIBLE"<<endl;
+            input = 1;
+        } else {
+            cin.ignore(100, '\n');
+            service_month = input;
+            input = 0;
+        }
+    }while(input != 0);
+
+    do {
+        input = 1;
+        cout<<"Please input Day: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: NOT A NUMBER"<<endl;
+        }else if(input <= 0 || input > 31) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: "<<input<<" DAY NOT POSSIBLE"<<endl;
+            input = 1;
+        } else {
+            cin.ignore(100, '\n');
+            service_day = input;
+            input = 0;
+        }
+    }while(input != 0);
+
+    do {
+        input = 1;
+        cout<<"Please input Year: ";
+        if (!(cin >> input)) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: NOT A NUMBER"<<endl;
+        }else if(input <= 0) {
+            cin.ignore(100, '\n');
+            cout<<"INVALID INPUT: "<<input<<" YEAR NOT POSSIBLE"<<endl;
+            input = 1;
+        } else {
+            cin.ignore(100, '\n');
+            service_year = input;
+            input = 0;
+        }
+    }while(input != 0);
 
 
+    cout<<"Please input a comment: ";
+    cin.get(service_comment, 100, '\n');
+    cin.ignore(100, '\n');
 
+    inputService(mem,ser_data,service_code,service_year,service_month,service_day,service_comment);
+
+
+}
+
+void Provider::inputService(Member& mem, Service*& ser_data, int service_code, int service_year, int service_month, int service_day, char* service_comment) {
+    Service* member_ser = new Service();
+    member_ser->updateUserName(user_name);
+    member_ser->updateId(id);
+    member_ser->updateYear(service_year);
+    member_ser->updateMonth(service_month);
+    member_ser->updateDay(service_day);
+    member_ser->updateServiceName(ser_data->getServiceName());
+    member_ser->updateServiceNum(ser_data->getServiceNumber());
+    member_ser->updateFee(ser_data->getFee());
+    member_ser->updateComment(service_comment);
+
+    mem.recordService(*member_ser);
+    //created and recorded service for member
+  
+
+    Service* provider_ser = new Service;
+    provider_ser->updateUserName(mem.getUserName());
+    provider_ser->updateId(mem.getId());
+    provider_ser->updateYear(service_year);
+    provider_ser->updateMonth(service_month);
+    provider_ser->updateDay(service_day);
+    provider_ser->updateServiceName(ser_data->getServiceName());
+    provider_ser->updateServiceNum(ser_data->getServiceNumber());
+    provider_ser->updateFee(ser_data->getFee());
+    provider_ser->updateComment(service_comment);
+
+    Service_list.push_back(provider_ser);
+    //clear and recoded service for provider
+    for (auto i : Service_list) {
+        cout << "------------------------------------------" << endl;
+        cout<<"Member name: "<<i->getUserName()<<endl;
+        cout<<"Member id: "<<i->getId()<<endl;
+        cout<<"Date: "<<i->getMonth()<<"/"<<i->getDay()<<"/"<<i->getYear()<<endl;
+        cout<<"Service: "<<i->getServiceName()<<endl;
+        cout<<"Service number: "<<i->getServiceNumber()<<endl;
+        cout<<"Comment: "<<i->getComment()<<endl;
+        cout << "------------------------------------------" << endl;
+    }
 }
 
 bool generateReport()
@@ -150,7 +282,4 @@ bool generateReport()
     myfile.close(); 
     */
     return false;
-
-
-
 }

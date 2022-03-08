@@ -14,7 +14,13 @@ class Manager {
         ~Manager();
     
         void menu();
-        void add_provider_member();
+        void add_member();
+        void add_provider();
+        void update_member();
+        void update_provider();
+        void delete_member();
+        void delete_provider();
+        //void generate_member_report();
 
     protected:
         vector<Provider*> provider_list;

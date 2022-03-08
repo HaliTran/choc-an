@@ -43,12 +43,18 @@ bool Member::operator==(const Member &compare)
     return Information::operator<(compare.id);
 }
 
-Service& Member::getService(const int id) {
+int Member::getService(const int id, Service* ser) {
     for (auto i : consult) {
-        if (i.getId() == id) return i;
+        if (i->getId() == id) {
+            ser = i;
+            return 0;
+        }
     }
-    Service temp;
-    return temp;
+    return 1;
+}
+
+void Member::recordService(Service& ser) {
+    consult.push_back(&ser);
 }
 
 bool Member::generateReport()
@@ -80,7 +86,7 @@ bool Member::generateReport()
         //Date of service (MM-DD-YYYY).
         myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
         myfile << i.getUserName() << endl;     //Provider name (25 characters)
-        myfile << i..getServiceName() << endl;   //Service name (20 characters). 
+        myfile << i.getServiceName() << endl;   //Service name (20 characters). 
     }
     myfile.close(); 
 

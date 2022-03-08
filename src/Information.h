@@ -5,7 +5,7 @@
 #include <list>
 using namespace std;
 
-class Information{ 
+class Information{
     public:
         Information();
         Information(const string&, const int);
