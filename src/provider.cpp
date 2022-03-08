@@ -228,7 +228,7 @@ void Provider::inputService(Member& mem, Service*& ser_data, int service_code, i
     }
 }
 
-bool generateReport()
+bool Provider::generateReport()
 {
     ofstream myfile;
 

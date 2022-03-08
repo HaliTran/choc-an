@@ -63,8 +63,8 @@ bool Member::generateReport()
     ofstream myfile;
 
     string filename = "Reports/";
-    filename.append( getId() );  //filename is member_id
-    filename.append(".txt");    // append ".txt" = member_id.txt
+    //filename.append( getId() );  //filename is member_id
+    //filename.append(".txt");    // append ".txt" = member_id.txt
 
     myfile.open (filename);
     if (!myfile.is_open())
