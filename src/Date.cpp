@@ -37,6 +37,10 @@ int Date::getMonth() { return month; }
 int Date::getDay() { return day; }
 int Date::getYear() { return year; }
 
+time_t Date::getCompTime() {
+	return comp_time;
+}
+
 // TODO needs validation
 void Date::updateMonth(const int m) {
 	month = m;

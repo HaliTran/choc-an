@@ -1,7 +1,9 @@
 #include <iostream>
-// #include "Address.h"
-// #include "Provider.h"
-// #include "Manager.h"
+#include <ctime>
+#include <iomanip>
+#include "Address.h"
+#include "Provider.h"
+#include "Manager.h"
 using namespace std;
 void clear() {
 	for (int i = 0; i < 75; i++) cout<<"\n";
@@ -10,7 +12,8 @@ void clear() {
 void mainMenu() {
 	char input;
 	int id;
-	
+	Provider* provider;
+	Manager* manager;
 	do {
         cout << "------------------------------------------" << endl;
 		cout<<"1 = Provider"<<endl;
@@ -36,7 +39,9 @@ void mainMenu() {
 				}
 
 				if (input == '2') {
-					cout<<"Manager terminal"<<endl;
+					manager = new Manager;
+					manager -> menu();
+					delete manager;
 				}
 			}
 		
@@ -44,7 +49,13 @@ void mainMenu() {
 }
 
 int main(int argc, char* argv[]) {
-	
+	time_t t = time(NULL);
+	struct tm * ct;
+	time (&t);
+	ct = localtime (&t);
+
+
+
 	mainMenu();
 	return 0;
 }

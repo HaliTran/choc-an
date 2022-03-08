@@ -63,8 +63,10 @@ bool Member::generateReport()
     ofstream myfile;
 
     string filename = "Reports/";
-    filename.append( getId() );  //filename is member_id
-    filename.append(".txt");    // append ".txt" = member_id.txt
+    filename += to_string(getId());  //filename is provider_id
+    filename.append(".txt");    // append ".txt" = provider_id.txt
+
+    cout<<"Filename: "<<filename<<endl;
 
     myfile.open (filename);
     if (!myfile.is_open())
@@ -73,22 +75,23 @@ bool Member::generateReport()
         return true;
     }
     //else open
-    myfile << "Member Report" << endl;
-    myfile << getUserName() << endl;    //Member name (25 characters). 
-    myfile << getId() << endl;          //Member number (9 digits).
-    myfile << getStreet() << endl;      //Member street address (25 characters)
-    myfile << getCity() << endl;        //Member city (14 characters). 
-    myfile << getState() << endl;       //Member state (2 letters). 
-    myfile << getZipCode() << endl;     //Member zip code (5 digits).
 
-    for (auto i : consult)
-    {
+    myfile<<"    Chocoholics Anonymous Member Report    "<<endl;
+    myfile<<"\n"<<endl;
+    myfile<<getUserName() <<endl;
+    myfile<<getStreet()<<endl;
+    myfile<<getState()<<", "<<getState()<<endl;
+    myfile<<getZipCode()<<endl;
+    myfile<<"Account numer: "<<getId()<<endl;
+    myfile<<"\n"<<endl;
+    myfile<<"    "<<"Service consulted"<<endl;
+    for (auto i : consult) {
         //Date of service (MM-DD-YYYY).
-        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
-        myfile << i.getUserName() << endl;     //Provider name (25 characters)
-        myfile << i.getServiceName() << endl;   //Service name (20 characters). 
+        myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;
+        myfile<<"    "<<"Provider: "<<i->getUserName()<<endl;
+        myfile<<"    "<<"Service: "<<i->getServiceName()<<endl;
+        myfile<<"\n";
     }
     myfile.close(); 
-
     return false;
 }

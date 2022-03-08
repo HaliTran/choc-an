@@ -26,6 +26,7 @@ class Provider : public Address{
         int getTotalFee();
     
         bool generateReport(int member_id);
+        bool generateReport();
         int getService(const int id, Service*& ser);
 
         void menu();

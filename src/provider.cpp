@@ -228,14 +228,16 @@ void Provider::inputService(Member& mem, Service*& ser_data, int service_code, i
     }
 }
 
-bool generateReport()
+bool Provider::generateReport()
 {
     ofstream myfile;
 
     string filename = "Reports/";
-    filename.append( getId() );  //filename is provider_id
+    filename += to_string(getId());  //filename is provider_id
     filename.append(".txt");    // append ".txt" = provider_id.txt
 
+    cout<<"Filename: "<<filename<<endl;
+    
     myfile.open (filename);
     if (!myfile.is_open())
     {
@@ -261,7 +263,6 @@ bool generateReport()
     //Total number of consultations with members (3 digits). 
     //Total fee for the week (up to $99,999.99). 
     
-    myfile << "Member Report" << endl;
     myfile << getUserName() << endl;    //Member name (25 characters). 
     myfile << getId() << endl;          //Member number (9 digits).
     myfile << getStreet() << endl;      //Member street address (25 characters)
@@ -269,13 +270,33 @@ bool generateReport()
     myfile << getState() << endl;       //Member state (2 letters). 
     myfile << getZipCode() << endl;     //Member zip code (5 digits).
 
-    for (auto i : consult)
-    {
-        //Date of service (MM-DD-YYYY).
-        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
-        myfile << i.getUserName() << endl;     //Provider name (25 characters)
-        myfile << i..getServiceName() << endl;   //Service name (20 characters). 
+    myfile<<"    Chocoholics Anonymous Member Report    "<<endl;
+    myfile<<"\n"<<endl;
+    myfile<<getUserName()<<endl;
+    myfile<<getStreet()<<endl;
+    // myfile<<getState()<<", "<<getState<<endl;
+    myfile<<getZipCode()<<endl;
+    myfile<<"\n"<<endl;
+
+    myfile<<"total number of consultations: "<<Service_list.size()<<endl;
+    myfile<<"Total fee: "<<total_fee<<endl;
+
+    myfile<<"\n"<<endl;
+    myfile<<"    "<<"Service provided"<<endl;
+    struct tm * ct;
+    time_t c_time;
+    for (auto i : Service_list) {
+        c_time = i->getCompTime();
+        time (&c_time);
+	    ct = localtime (&c_time);
+        myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;
+        myfile<<"    "<<"Date and time received by computer: "<<ct<<endl;
+        myfile<<"    "<<"Member name: "<<i->getUserName()<<endl;
+        myfile<<"    "<<"Member id: "<<i->getId()<<endl;
+        myfile<<"    "<<"Service code: "<<i->getServiceNumber()<<endl;
+        myfile<<"    "<<"Fee: "<<i->getFee()<<endl;
     }
+	
     myfile.close(); 
 
     return false;
