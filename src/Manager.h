@@ -20,7 +20,7 @@ class Manager {
         void update_provider();
         void delete_member();
         void delete_provider();
-        //void generate_member_report();
+        void generate_member_report();
 
     protected:
         vector<Provider*> provider_list;

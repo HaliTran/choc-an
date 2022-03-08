@@ -17,7 +17,8 @@ void Manager::menu(){
         cout <<"4 = Delete provider from the ChocAn Database" << endl;
         cout <<"5 = Update member information" << endl;
         cout <<"6 = Update provider information" << endl;
-        cout <<"7 = Generate report about a member/provider" << endl;
+        cout <<"7 = Generate report about a member" << endl;
+        cout <<"8 = Generate report about a provider" << endl;
         cout <<"0 = Exit" << endl;
         cout << "--------------------------------------------" << endl;
         cout<<"Please enter a number corresponding to the task you'd like to execute: ";
@@ -47,6 +48,8 @@ void Manager::menu(){
             update_member();
         else if(input == 6)
             update_provider();
+        else if(input == 7)
+            generate_member_report();
 
     } while (input != 0);
     
@@ -54,7 +57,7 @@ void Manager::menu(){
     exit(EXIT_SUCCESS);
 }
 
-/*
+
 //generate report about a member
 void Manager::generate_member_report()
 {
@@ -71,22 +74,17 @@ void Manager::generate_member_report()
         //found a match, delete from the database
         if(member_list[i]->getId() == id_number)
         {
-            string filename = "Reports/";
-            filename.append(member_list[i]->getId() );  //filename is member_id
-            filename.append(".txt");    // append ".txt" = member_id.txt
+            member_list[i]->generateReport();
+            cout << "The report for the member as been generated!" << endl << endl;
+            return;
         }
+
     }
 
-    // myfile.open (filename);
-    // if (!myfile.is_open())
-    // {
-    //     cout << "Error Generating Provider Report" << endl;
-    //     return true;
-    // }
-    // //else open
+    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+    return;
 
 }
-*/
 
 
 //function to delete a provider
