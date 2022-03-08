@@ -1,5 +1,5 @@
 #include "Provider.h"
-
+#include <algorithm>
 
 Provider::Provider()
 {
@@ -239,20 +239,26 @@ bool Provider::generateReport()
     int temp_day = (ltm->tm_mday);
 
     string filename = getUserName();
-    filename += "_";
-    filename +=to_string(temp_month);
-    filename += "_";
-    filename +=to_string(temp_day);
-    filename += "_";
+    int l = filename.length(); // storing the length of the string
+    int c = count(filename.begin(), filename.end(),' '); // counting the number of whitespaces
+    remove(filename.begin(), filename.end(),' '); // removing all the whitespaces
+    filename.resize(l - c);
+    //remove space since file names don't like spaces
+
+    filename += "-";
     filename +=to_string(temp_year);
+    filename += "-";
+    filename +=to_string(temp_month);
+    filename += "-";
+    filename +=to_string(temp_day);
     filename +=".txt";
 
- 
-    cout<<"*********************Filename: "<<filename<<endl;
+    string file_path = "Reports/";
+    file_path +=filename;
 
     ofstream myfile;
     
-    myfile.open (filename.c_str());
+    myfile.open (file_path.c_str());
     if (!myfile.is_open())
     {
         cout << "Error Generating Provider Report" << endl;
@@ -277,34 +283,39 @@ bool Provider::generateReport()
     //Total number of consultations with members (3 digits). 
     //Total fee for the week (up to $99,999.99). 
     
-    myfile << getUserName() << endl;    //Member name (25 characters). 
-    myfile << getId() << endl;          //Member number (9 digits).
-    myfile << getStreet() << endl;      //Member street address (25 characters)
-    myfile << getCity() << endl;        //Member city (14 characters). 
-    myfile << getState() << endl;       //Member state (2 letters). 
-    myfile << getZipCode() << endl;     //Member zip code (5 digits).
-
-    myfile<<"    Chocoholics Anonymous Member Report    "<<endl;
-    myfile<<"\n"<<endl;
+    // myfile << getUserName() << endl;    //Member name (25 characters). 
+    // myfile << getId() << endl;          //Member number (9 digits).
+    // myfile << getStreet() << endl;      //Member street address (25 characters)
+    // myfile << getCity() << endl;        //Member city (14 characters). 
+    // myfile << getState() << endl;       //Member state (2 letters). 
+    // myfile << getZipCode() << endl;     //Member zip code (5 digits).
+    int total = 0;
+    for (auto i : Service_list) {
+        total += i->getFee();
+    }
+    myfile<<"    Chocoholics Anonymous Provider Report    "<<endl;
+    myfile<<endl;
     myfile<<getUserName()<<endl;
     myfile<<getStreet()<<endl;
     myfile<<getCity()<<", "<<getState()<<endl;
     myfile<<getZipCode()<<endl;
-    myfile<<endl;
+    myfile<<"ID: "<<getId()<<endl;
+    myfile<<"\n"<<endl;
 
     myfile<<"total number of consultations: "<<Service_list.size()<<endl;
-    myfile<<"Total fee: "<<total_fee<<endl;
+    myfile<<"Total fee: "<<total<<endl;
 
-    myfile<<"\n"<<endl;
-    myfile<<"    "<<"Service provided"<<endl;
+    myfile<<endl;
+    myfile<<"        "<<"Service provided"<<endl;
     struct tm * ct;
     time_t c_time;
     for (auto i : Service_list) {
         c_time = i->getCompTime();
         time (&c_time);
 	    ct = localtime (&c_time);
+        myfile<<endl;
         myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;
-        myfile<<"    "<<"Date and time received by computer: "<<ct->tm_mon<<"-"<<ct->tm_mday<<"-"<<ct->tm_year<<" "<<ct->tm_hour<<":"<<ct->tm_min<<":"<<ct->tm_sec<<endl;
+        myfile<<"    "<<"Date and time received by computer: "<<(1+ct->tm_mon)<<"-"<<ct->tm_mday<<"-"<<(1900+ct->tm_year)<<" "<<ct->tm_hour<<":"<<ct->tm_min<<":"<<ct->tm_sec<<endl;
         myfile<<"    "<<"Member name: "<<i->getUserName()<<endl;
         myfile<<"    "<<"Member id: "<<i->getId()<<endl;
         myfile<<"    "<<"Service code: "<<i->getServiceNumber()<<endl;
