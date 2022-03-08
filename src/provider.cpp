@@ -274,9 +274,9 @@ bool Provider::generateReport()
     myfile<<"\n"<<endl;
     myfile<<getUserName()<<endl;
     myfile<<getStreet()<<endl;
-    // myfile<<getState()<<", "<<getState<<endl;
+    myfile<<getCity()<<", "<<getState()<<endl;
     myfile<<getZipCode()<<endl;
-    myfile<<"\n"<<endl;
+    myfile<<endl;
 
     myfile<<"total number of consultations: "<<Service_list.size()<<endl;
     myfile<<"Total fee: "<<total_fee<<endl;

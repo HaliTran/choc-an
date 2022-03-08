@@ -19,6 +19,7 @@ void Manager::menu(){
         cout <<"6 = Update provider information" << endl;
         cout <<"7 = Generate report about a member" << endl;
         cout <<"8 = Generate report about a provider" << endl;
+        cout <<"-1 = Test provider (temp)"<<endl;
         cout <<"0 = Exit" << endl;
         cout << "--------------------------------------------" << endl;
         cout<<"Please enter a number corresponding to the task you'd like to execute: ";
@@ -52,6 +53,11 @@ void Manager::menu(){
             generate_member_report();
         else if(input == 8)
             generate_provider_report();
+        else if(input == -1) {
+            if (provider_list.size() != 0) {
+                cout<<"Empty list"<<endl;
+            } else provider_list[0]->menu();
+        }
 
     } while (input != 0);
     

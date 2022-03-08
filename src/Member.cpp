@@ -80,9 +80,9 @@ bool Member::generateReport()
     myfile<<"\n"<<endl;
     myfile<<getUserName() <<endl;
     myfile<<getStreet()<<endl;
-    myfile<<getState()<<", "<<getState()<<endl;
+    myfile<<getCity()<<", "<<getState()<<endl;
     myfile<<getZipCode()<<endl;
-    myfile<<"Account numer: "<<getId()<<endl;
+    myfile<<"Account number: "<<getId()<<endl;
     myfile<<"\n"<<endl;
     myfile<<"    "<<"Service consulted"<<endl;
     for (auto i : consult) {

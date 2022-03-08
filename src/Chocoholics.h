@@ -7,7 +7,7 @@ class Chocoholics {
     public:
         Chocoholics();
         int getMember(const int id, Member*& mem);
-        // int getProvider(const int id, Provider* pro);
+        // int getProvider(const int id, Provider*& pro);
 
         int getServiceData(const int id, Service*& ser);
     private:

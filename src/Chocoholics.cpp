@@ -17,7 +17,7 @@ int Chocoholics::getMember(const int id, Member*& mem) {
     //1 = does not exist
 }
 
-// int Chocoholics::getProvider(const int id, Provider* pro) {
+// int Chocoholics::getProvider(const int id, Provider*& pro) {
 //     pro = new Provider("Star", 111111111, "321th", "Portland", "OR", 97111);
 
 
