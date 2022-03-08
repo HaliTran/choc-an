@@ -73,13 +73,13 @@ bool Member::generateReport()
         return true;
     }
     //else open
-    myfile << "Member Report" << endl;
+    myfile << "Member Report"   << endl;
     myfile << getUserName() << endl;    //Member name (25 characters). 
-    myfile << getId() << endl;          //Member number (9 digits).
-    myfile << getStreet() << endl;      //Member street address (25 characters)
-    myfile << getCity() << endl;        //Member city (14 characters). 
-    myfile << getState() << endl;       //Member state (2 letters). 
-    myfile << getZipCode() << endl;     //Member zip code (5 digits).
+    myfile << getId()       << endl;          //Member number (9 digits).
+    myfile << getStreet()   << endl;      //Member street address (25 characters)
+    myfile << getCity()     << endl;        //Member city (14 characters). 
+    myfile << getState()    << endl;       //Member state (2 letters). 
+    myfile << getZipCode()  << endl;     //Member zip code (5 digits).
 
     for (auto i : consult)
     {
