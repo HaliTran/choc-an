@@ -15,9 +15,9 @@ int main(int argc, char* argv[]) {
 	string state = "OR";
 	int zip = 12345;
 	Provider pro(name, id, st, city, state, zip);
-	pro.menu();
+	//pro.menu();
 	Manager test2;
-	// test2.menu();
+	test2.menu();
 
 	return 0;
 }

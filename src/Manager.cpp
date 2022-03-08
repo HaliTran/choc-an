@@ -54,6 +54,40 @@ void Manager::menu(){
     exit(EXIT_SUCCESS);
 }
 
+/*
+//generate report about a member
+void Manager::generate_member_report()
+{
+    int id_number;
+    cout << "What is the ID number of the provider to delete (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    ofstream myfile;
+
+    int vector_size = member_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    { 
+        //found a match, delete from the database
+        if(member_list[i]->getId() == id_number)
+        {
+            string filename = "Reports/";
+            filename.append(member_list[i]->getId() );  //filename is member_id
+            filename.append(".txt");    // append ".txt" = member_id.txt
+        }
+    }
+
+    // myfile.open (filename);
+    // if (!myfile.is_open())
+    // {
+    //     cout << "Error Generating Provider Report" << endl;
+    //     return true;
+    // }
+    // //else open
+
+}
+*/
+
 
 //function to delete a provider
 void Manager::delete_provider()
