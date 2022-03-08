@@ -50,6 +50,8 @@ void Manager::menu(){
             update_provider();
         else if(input == 7)
             generate_member_report();
+        else if(input == 8)
+            generate_provider_report();
 
     } while (input != 0);
     
@@ -57,16 +59,39 @@ void Manager::menu(){
     exit(EXIT_SUCCESS);
 }
 
+//generate report about a provider
+void Manager::generate_provider_report()
+{
+    int id_number;
+    cout << "What is the ID number of the provider to generate report (9 digits): ";
+    cin >> id_number;
+    cin.ignore(100,'\n');
+
+    int vector_size = provider_list.size();
+    for(int i = 0; i < vector_size; ++i)
+    { 
+        //found a match, generate report
+        if(provider_list[i]->getId() == id_number)
+        {
+            provider_list[i]->generateReport();
+            cout << "The report for the provider as been generated!" << endl << endl;
+            return;
+        }
+
+    }
+
+    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+    return;
+
+}
 
 //generate report about a member
 void Manager::generate_member_report()
 {
     int id_number;
-    cout << "What is the ID number of the provider to delete (9 digits): ";
+    cout << "What is the ID number of the member to generate report (9 digits): ";
     cin >> id_number;
     cin.ignore(100,'\n');
-
-    ofstream myfile;
 
     int vector_size = member_list.size();
     for(int i = 0; i < vector_size; ++i)
