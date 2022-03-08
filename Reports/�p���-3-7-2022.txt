@@ -1,16 +1,16 @@
-Kaiser
+LLC
 123123123
-1531 NE 5th Ave
-Salem
-Oregon
-95231
+123
+port
+or
+0
     Chocoholics Anonymous Member Report    
 
 
-Kaiser
-1531 NE 5th Ave
-95231
-
+LLC
+123
+port, or
+0
 
 total number of consultations: 0
 Total fee: 0

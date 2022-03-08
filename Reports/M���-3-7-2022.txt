@@ -1,0 +1,25 @@
+Star Boy
+123123123
+123th Ave
+Portland
+OR
+97000
+    Chocoholics Anonymous Member Report    
+
+
+Star Boy
+123th Ave
+Portland, OR
+97000
+
+total number of consultations: 1
+Total fee: 0
+
+
+    Service provided
+    Date of Service: 12-12-11
+    Date and time received by computer: 2-7-122 23:15:0
+    Member name: Black
+    Member id: 876543210
+    Service code: 999999
+    Fee: 100
