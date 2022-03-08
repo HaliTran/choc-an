@@ -112,7 +112,10 @@ bool generateReport()
     }
     //else open
 
-    //Provider name (25 characters). 
+    //Provider name (25 characters)
+
+
+
     //Provider number (9 digits). 
     //Provider street address (25 characters). 
     //Provider city (14 characters). 
@@ -128,7 +131,7 @@ bool generateReport()
     //Fee to be paid (up to $999.99). 
     //Total number of consultations with members (3 digits). 
     //Total fee for the week (up to $99,999.99). 
-    
+    /*
     myfile << "Member Report" << endl;
     myfile << getUserName() << endl;    //Member name (25 characters). 
     myfile << getId() << endl;          //Member number (9 digits).
@@ -145,7 +148,7 @@ bool generateReport()
         myfile << i..getServiceName() << endl;   //Service name (20 characters). 
     }
     myfile.close(); 
-
+    */
     return false;
 
 
