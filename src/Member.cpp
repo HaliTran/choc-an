@@ -84,9 +84,9 @@ bool Member::generateReport()
     for (auto i : consult)
     {
         //Date of service (MM-DD-YYYY).
-        myfile << i.getMonth() << i.getDay() << i.getYear() << i.getCompTime() << endl;
-        myfile << i.getUserName() << endl;     //Provider name (25 characters)
-        myfile << i.getServiceName() << endl;   //Service name (20 characters). 
+        myfile << i->getMonth() << i->getDay() << i->getYear() << i->getCompTime() << endl;
+        myfile << i->getUserName() << endl;     //Provider name (25 characters)
+        myfile << i->getServiceName() << endl;   //Service name (20 characters). 
     }
     myfile.close(); 
 
