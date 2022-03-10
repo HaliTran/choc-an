@@ -19,18 +19,11 @@ void mainMenu() {
 	choco.getProvider(123456789, pro);
 
 	Provider* test;
-	choco.insertProvider(pro);
-	choco.selectProvider(123123123, test);
-	choco.deleteProvider(123123123);
-	if (test != NULL) {
-		cout<<test->getUserName()<<endl;
-		cout<<test->getId()<<endl;
-	}
-	// choco.insertMember(mem);
-	
+	// choco.insertProvider(pro);
+
 
 	
-	Provider* provider;
+	Provider* provider = NULL;
 	Manager* manager;
 	do {
         cout << "------------------------------------------" << endl;
@@ -53,7 +46,11 @@ void mainMenu() {
 			} else {
 				cin.ignore(100, '\n');
 				if (input == '1') {
-					cout<<"Provider terminal"<<endl;
+					int flag = choco.selectProvider(id, provider);
+					if (provider != NULL) {
+						cout<<"Name: "<<provider->getUserName()<<endl;
+						provider->menu();
+					}
 				}
 
 				if (input == '2') {
