@@ -38,6 +38,8 @@ class Provider : public Address{
         int total_consultations;
         int total_fee;
 
+        void printServices();
+
         void validateService(Member& mem); //prompts the provider for data
         void inputService(Member& mem, Service*& ser_data, int service_code, int service_year, 
         int service_month, int service_day, char* service_comment); //data gets stored
@@ -49,9 +51,6 @@ class Provider : public Address{
 class Chocoholics {
     public:
         Chocoholics();
-        int getMember(const int id, Member*& mem);
-        int getProvider(const int id, Provider*& pro);
-        int getServiceData(const int id, Service*& ser);
 
         int insertMember(Member*& mem); //puts data to database
         int insertProvider(Provider*& pro); //puts data to database
@@ -65,7 +64,7 @@ class Chocoholics {
         int insertService(Service*& ser);
         int selectService(const int key, Service*& ser);
         int deleteService(const int key);
-        vector<Service*>& selectAllService();
+        int selectAllService(vector<Service*>*&);
 
     private:
         static int callbackMem(void* mem, int argc, char** argv, char** azColName);
@@ -80,6 +79,11 @@ class Chocoholics {
 
         static int callbackServicePro(void* ser, int argc, char** argv, char** azColName);
         static void callbackServiceProApp(void* ser, char* argv, char* azColName, int i);
+
+        static int callbackServices(void* ser, int argc, char** argv, char** azColName);
+        static int callbackServiceAll(void* ser, int argc, char** argv, char** azColName);
+        static void callbackServiceApp(void* ser, char* argv, char* azColName);
+        static void callbackServiceAppAll(void* ser, char* argv, char* azColName, int i);
         
 
 

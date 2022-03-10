@@ -88,15 +88,37 @@ void Provider::menu() {
             } 
             Chocoholics choco;
             Member* mem;
-            if (choco.getMember(mem_id, mem) == 0) {
+            if (choco.selectMember(mem_id, mem) == 0 && mem != NULL) {
+                if (mem->getUserName().size() == 0) {
+                    cout<<"ID not found"<<endl;
+                    continue;
+                }
                 validateService(*mem);
+                choco.deleteMember(mem->getId());
+                choco.insertMember(mem);
             }
             else cout<<"ID not found"<<endl;
 
         }else if (input == '2') {
-
+            printServices();
         }
     }while(input != '0');
+}
+
+void Provider::printServices() {
+    Chocoholics choco;
+
+    vector <Service*> services;
+    vector <Service*>* ptr = &services;
+
+    int flag = choco.selectAllService(ptr);
+    cout<<endl;
+    for (auto i : services) {
+        cout<<"Service Name: "<<i->getServiceName()<<endl;
+        cout<<"Service Number: "<<i->getServiceNumber()<<endl;
+        cout<<"Fee: "<<i->getFee()<<endl;
+        cout<<endl;
+    }
 }
 
 
@@ -110,6 +132,7 @@ void Provider::validateService(Member& mem) {
     int input;
 
     cout << "------------------------------------------" << endl;
+    cout<<"Member Name: "<<mem.getUserName()<<endl;
     cout<<"Please input Service code: ";
         if (!(cin >> service_code)) {
             cin.ignore(100, '\n');
@@ -122,7 +145,7 @@ void Provider::validateService(Member& mem) {
     Chocoholics choco;
     Service* ser_data;
     //returns only service number, service name, and service fee
-    if (choco.getServiceData(service_code, ser_data) == 0) { 
+    if (choco.selectService(service_code, ser_data) == 0) { 
         cout<<"The service name is: "<<ser_data->getServiceName()<<endl;
         cout<<"Is this correct (y/n): ";
         char flag;
