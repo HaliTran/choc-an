@@ -22,7 +22,6 @@ void mainMenu() {
 	// choco.insertProvider(pro);
 
 
-	
 	Provider* provider = NULL;
 	Manager* manager;
 	do {
@@ -34,6 +33,8 @@ void mainMenu() {
 		cout<<"Enter: ";
 		cin>>input;
 		cin.ignore(100, '\n');
+
+		if (input == '0') return ;
 
 		cout<<"Please enter your ID Number: ";
 

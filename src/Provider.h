@@ -60,6 +60,13 @@ class Chocoholics {
 
         int deleteMember(const int key);
         int deleteProvider(const int key);
+
+
+        int insertService(Service*& ser);
+        int selectService(const int key, Service*& ser);
+        int deleteService(const int key);
+        vector<Service*>& selectAllService();
+
     private:
         static int callbackMem(void* mem, int argc, char** argv, char** azColName);
         static void callbackMemApp(void* mem, char* argv, char* azColName);
