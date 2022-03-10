@@ -438,3 +438,17 @@ int Chocoholics::deleteProvider(const int key) {
     sqlite3_close(DB);
 } 
 
+
+
+int Chocoholics::insertService(Service*& ser) {
+
+}
+int Chocoholics::selectService(const int key, Service*& ser) {
+
+}
+int Chocoholics::deleteService(const int key) {
+
+}
+vector<Service*>& Chocoholics::selectAllService() {
+    
+}
