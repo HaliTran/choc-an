@@ -462,6 +462,12 @@ void Manager::add_member()
     //creating member object
     Member * a_mem = new Member(name, id, st, city, state, zip);
     member_list.push_back(a_mem);
+
+    //creating chocholic object for database operation
+    Chocoholics choco;
+    choco.deleteMember(id);
+    choco.insertMember(a_mem);
+    
     cout <<"The member has been added to the ChocAn database!" << endl << endl;
     return;
 }
@@ -499,7 +505,13 @@ void Manager::add_provider()
 
     //creating member object
     Provider * a_pro = new Provider(name, id, st, city, state, zip);
-    provider_list.push_back(a_pro);
+    provider_list.push_back(a_pro); //adding provider in vector
+
+    //creating chocoholic object for databse operation
+    Chocoholics choco;
+    choco.deleteProvider(id);
+    choco.insertProvider(a_pro); //inserting provider into database
+
     cout <<"The provider has been added to the ChocAn database!" << endl << endl;
     return;
 }
