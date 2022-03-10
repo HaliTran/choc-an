@@ -192,7 +192,7 @@ int Chocoholics::selectMember(const int key, Member*& mem) {
 	if (exit != SQLITE_OK) {
 		cerr << "Error : selectData : "<<messageError<< endl;
 		sqlite3_free(messageError);
-	} else cout << "Records selected Successfully!" << endl;
+	};
 
     string q1 = "SELECT * FROM SERVICES WHERE PARENT_ID = ";
     q1 += to_string(mem->getId());
@@ -202,7 +202,7 @@ int Chocoholics::selectMember(const int key, Member*& mem) {
 	if (exit != SQLITE_OK) {
 		cerr << "Error : selectData : "<<messageError<< endl;
 		sqlite3_free(messageError);
-	} else cout << "Records selected Successfully!" << endl;
+	} else;
 
     sqlite3_close(DB);
 
