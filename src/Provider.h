@@ -20,13 +20,15 @@ class Provider : public Address{
         ~Provider();
 
         bool deleteService(const int);
-        void recordService(const Service&);
+        void recordService(Service& ser);
         
         int getTotalConsultations();
         int getTotalFee();
     
         bool generateReport();
         int getService(const int id, Service*& ser);
+
+        vector<Service*> getAllService();
 
         void menu();
 
@@ -41,4 +43,39 @@ class Provider : public Address{
         int service_month, int service_day, char* service_comment); //data gets stored
 
 
+};
+
+
+class Chocoholics {
+    public:
+        Chocoholics();
+        int getMember(const int id, Member*& mem);
+        int getProvider(const int id, Provider*& pro);
+        int getServiceData(const int id, Service*& ser);
+
+        int insertMember(Member*& mem); //puts data to database
+        int insertProvider(Provider*& pro); //puts data to database
+        int selectMember(const int key, Member*& mem); //gets data from database
+        int selectProvider(const int key, Provider*& pro); //gets data from database
+
+        int deleteMember(const int key);
+        int deleteProvider(const int key);
+    private:
+        static int callbackMem(void* mem, int argc, char** argv, char** azColName);
+        static void callbackMemApp(void* mem, char* argv, char* azColName);
+        
+        static int callbackServiceMem(void* mem, int argc, char** argv, char** azColName);
+        static void callbackServiceMemApp(void* ser, char* argv, char* azColName, int i);
+
+
+        static int callbackPro(void* pro, int argc, char** argv, char** azColName);
+        static void callbackProApp(void* pro, char* argv, char* azColName);
+
+        static int callbackServicePro(void* ser, int argc, char** argv, char** azColName);
+        static void callbackServiceProApp(void* ser, char* argv, char* azColName, int i);
+        
+
+
+        void createTable();
+        string path;
 };

@@ -95,3 +95,7 @@ bool Member::generateReport()
     myfile.close(); 
     return false;
 }
+
+vector<Service*>& Member::getAllService() {
+    return consult;
+}

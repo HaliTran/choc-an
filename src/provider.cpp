@@ -54,6 +54,15 @@ int Provider::getService(const int id, Service*& ser) {
 }
 
 
+void Provider::recordService(Service& ser) {
+    Service_list.push_back(&ser);
+}
+
+vector<Service*> Provider::getAllService() {
+    return Service_list;
+}
+
+
 void Provider::menu() {
     using namespace std;
 

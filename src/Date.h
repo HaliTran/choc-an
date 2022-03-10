@@ -21,6 +21,7 @@ class Date : public Information {
         void updateMonth(const int);
         void updateDay(const int);
         void updateYear(const int);
+        void updateCompTime(const int);
 
     protected:
         int month;

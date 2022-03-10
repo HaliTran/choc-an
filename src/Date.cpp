@@ -51,3 +51,7 @@ void Date::updateDay(const int d) {
 void Date::updateYear(const int y) {
 	year = y;
 }
+
+void Date::updateCompTime(const int c) {
+	comp_time = c;
+}

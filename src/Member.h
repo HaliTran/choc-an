@@ -29,4 +29,5 @@ class Member : public Address{
         int getService(const int id, Service* ser);
 
         void recordService(Service& ser);
+        vector<Service*>& getAllService();
 };

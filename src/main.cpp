@@ -12,6 +12,24 @@ void clear() {
 void mainMenu() {
 	char input;
 	int id;
+	Chocoholics choco;
+	Provider* pro = NULL;
+	// choco.getMember(123456789, mem);
+
+	choco.getProvider(123456789, pro);
+
+	Provider* test;
+	choco.insertProvider(pro);
+	choco.selectProvider(123123123, test);
+	choco.deleteProvider(123123123);
+	if (test != NULL) {
+		cout<<test->getUserName()<<endl;
+		cout<<test->getId()<<endl;
+	}
+	// choco.insertMember(mem);
+	
+
+	
 	Provider* provider;
 	Manager* manager;
 	do {
