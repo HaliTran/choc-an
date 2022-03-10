@@ -19,22 +19,18 @@ void Manager::menu(){
         cout <<"6 = Update provider information" << endl;
         cout <<"7 = Generate report about a member" << endl;
         cout <<"8 = Generate report about a provider" << endl;
-        cout <<"-1 = Test provider (temp)"<<endl;
         cout <<"0 = Exit" << endl;
         cout << "--------------------------------------------" << endl;
         cout<<"Please enter a number corresponding to the task you'd like to execute: ";
         
-        //getting user input and checking if valid
-        //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
-        if(!(cin >> input))
+        cin >> input;
+        cin.ignore(100,'\n');
+        //checking if input was in range
+        if(input < 0 || input > 8)
         {
-            cout << "Your input was invalid, please try again!" << endl << endl;
-            cin.clear();
-            cin.ignore(100,'\n');
+            cout << "Error input was out of range, please try again." << endl << endl;
             continue;
         }
-
-        cin.ignore(100,'\n');
 
         //calls appropriate function based on menu choice
         if(input == 1)
@@ -53,11 +49,6 @@ void Manager::menu(){
             generate_member_report();
         else if(input == 8)
             generate_provider_report();
-        else if(input == -1) {
-            if (provider_list.size() == 0) {
-                cout<<"Empty list"<<endl;
-            } else provider_list[0]->menu();
-        }
 
     } while (input != 0);
     
@@ -69,9 +60,22 @@ void Manager::menu(){
 void Manager::generate_provider_report()
 {
     int id_number;
-    cout << "What is the ID number of the provider to generate report (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the provider to generate report (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = provider_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -95,9 +99,22 @@ void Manager::generate_provider_report()
 void Manager::generate_member_report()
 {
     int id_number;
-    cout << "What is the ID number of the member to generate report (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the member to generate report (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = member_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -122,9 +139,22 @@ void Manager::generate_member_report()
 void Manager::delete_provider()
 {
     int id_number;
-    cout << "What is the ID number of the provider to delete (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the provider to delete (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = provider_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -148,9 +178,22 @@ void Manager::delete_provider()
 void Manager::delete_member()
 {
     int id_number;
-    cout << "What is the ID number of the member to delete (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the member to delete (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = member_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -173,9 +216,22 @@ void Manager::delete_member()
 void Manager::update_provider()
 {
     int id_number;
-    cout << "What is the ID number of the provider to update (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the provider to update (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = provider_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -198,16 +254,15 @@ void Manager::update_provider()
         
             //getting user input and checking if valid
             //re-prompt if necessary
-            //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
-            while(!(cin >> input))
+            cin >> input;
+            cin.ignore(100,'\n');
+            while(input < 1 || input > 6)
             {
-                cout << "Your input was invalid, please try again!" << endl;
-                cout << "Please enter valid input: ";
-                cin.clear();
+                cout << "Error invalid input. Please try again." << endl;
+                cout << "Enter: ";
+                cin >> input;
                 cin.ignore(100,'\n');
             }
-
-            cin.ignore(100,'\n');
             //updating the provider information
             if(input == 1)
             {
@@ -219,7 +274,7 @@ void Manager::update_provider()
             else if(input == 2)
             {
                 int id;
-                cout << "Provider's new ID number: ";
+                cout << "Provider's new ID number (9 digits): ";
                 cin >> id;
                 cin.ignore();
                 provider_list[i]->updateId(id);
@@ -269,9 +324,22 @@ void Manager::update_provider()
 void Manager::update_member()
 {
     int id_number;
-    cout << "What is the ID number of the member to update (9 digits): ";
-    cin >> id_number;
-    cin.ignore(100,'\n');
+    do
+    {
+        cout << "What is the ID number of the member to update (9 digits): ";
+        cin >> id_number;
+        cin.ignore(100,'\n');
+
+        //input was not a number
+        if (id_number < 100000000 || id_number > 999999999) 
+        {
+			cout<<"Error invalid number"<<endl << endl;
+            continue;
+        }
+        else
+            break;
+    
+    } while (true);
 
     int vector_size = member_list.size();
     for(int i = 0; i < vector_size; ++i)
@@ -294,16 +362,15 @@ void Manager::update_member()
         
             //getting user input and checking if valid
             //re-prompt if necessary
-            //DID NOT INCLUDE CHECK IF NUM IS OUT OF RANGE
-            while(!(cin >> input))
+            cin >> input;
+            cin.ignore(100,'\n');
+            while(input < 1 || input > 6)
             {
-                cout << "Your input was invalid, please try again!" << endl;
-                cout << "Please enter valid input: ";
-                cin.clear();
+                cout << "Error invalid input. Please try again." << endl;
+                cout << "Enter: ";
+                cin >> input;
                 cin.ignore(100,'\n');
             }
-
-            cin.ignore(100,'\n');
             //updating the member information
             if(input == 1)
             {
@@ -315,7 +382,7 @@ void Manager::update_member()
             else if(input == 2)
             {
                 int id;
-                cout << "Member's new ID number: ";
+                cout << "Member's new ID number (9 digits): ";
                 cin >> id;
                 cin.ignore();
                 member_list[i]->updateId(id);
@@ -375,7 +442,7 @@ void Manager::add_member()
     cout << "Member's name: ";
     getline(cin,name,'\n');
     
-    cout << "Member's ID number: ";
+    cout << "Member's ID number (9 digits): ";
     cin >> id;
     cin.ignore();
 
@@ -413,7 +480,7 @@ void Manager::add_provider()
     cout << "Provider's name: ";
     getline(cin,name,'\n');
     
-    cout << "Provider's ID number: ";
+    cout << "Provider's ID number (9 digits): ";
     cin >> id;
     cin.ignore();
 
