@@ -343,7 +343,7 @@ bool Provider::generateReport()
     time_t c_time;
     for (auto i : Service_list) {
         c_time = i->getCompTime();
-        time (&c_time);
+        // time (&c_time);
 	    ct = localtime (&c_time);
         myfile<<endl;
         myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;
