@@ -67,9 +67,10 @@ vector<Service*>& Provider::getAllService() {
 
 void Provider::menu() {
     using namespace std;
-
+    clear();
     char input;
     do {
+        cout<<"Provider: "<<getUserName()<<endl;
         cout << "------------------------------------------" << endl;
         cout<<"1 = Enter information about service provided to a member"<<endl;
         cout<<"2 = Request Provider dictory"<<endl;
@@ -102,6 +103,7 @@ void Provider::menu() {
             else cout<<"ID not found"<<endl;
 
         }else if (input == '2') {
+            clear();
             printServices();
         }
     }while(input != '0');
@@ -115,9 +117,6 @@ void Provider::printServices() {
 
     choco.selectAllService(ptr);
     if (ptr == NULL) return;
-    sort(services.begin(), services.end(), [] (const Service* x, const Service* y) {
-       return x->compare(*y);
-    });
 
     cout<<endl;
     for (auto i : services) {
@@ -137,7 +136,6 @@ void Provider::validateService(Member& mem) {
     int service_month;
     int service_day;
     int input;
-
     cout << "------------------------------------------" << endl;
     cout<<"Member Name: "<<mem.getUserName()<<endl;
     cout<<"Please input Service code: ";
@@ -164,6 +162,7 @@ void Provider::validateService(Member& mem) {
             return;
         } 
     }
+    clear();
     cout << "------------------------------------------" << endl;
     do {
         input = 1;

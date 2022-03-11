@@ -5,6 +5,8 @@
 #include <list>
 using namespace std;
 
+void clear();
+
 class Information{
     public:
         Information();

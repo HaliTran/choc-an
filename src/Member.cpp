@@ -105,8 +105,9 @@ bool Member::generateReport()
     myfile<<getCity()<<", "<<getState()<<endl;
     myfile<<getZipCode()<<endl;
     myfile<<"Account number: "<<getId()<<endl;
-    myfile<<"\n"<<endl;
-    myfile<<"    "<<"Service consulted"<<endl;
+    myfile<<endl;
+    myfile<<"        "<<"Service consulted"<<endl;
+    cout<<endl;
     for (auto i : consult) {
         //Date of service (MM-DD-YYYY).
         myfile<<"    "<<"Date of Service: "<<i->getMonth()<<"-"<<i->getMonth()<<"-"<<i->getDay()<<endl;

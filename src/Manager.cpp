@@ -8,6 +8,8 @@ Manager::~Manager(){}
 //display menu option for user
 void Manager::menu(){
     int input;
+    clear();
+
     do
     {
         cout << "------------------------------------------" << endl;
@@ -49,11 +51,12 @@ void Manager::menu(){
             generate_member_report();
         else if(input == 8)
             generate_provider_report();
+        clear();
 
     } while (input != 0);
     
     cout << "Have a great day!" << endl;
-    exit(EXIT_SUCCESS);
+    return;
 }
 
 //generate report about a provider
@@ -156,6 +159,7 @@ void Manager::delete_provider()
     //delete provider
     Chocoholics choco;
     choco.deleteProvider(id_number);
+    cout<<"Provider has been deleted"<<endl;
     return;
 
 }
@@ -186,6 +190,8 @@ void Manager::delete_member()
     //delete member
     Chocoholics choco;
     choco.deleteMember(id_number);
+    cout<<"Member has been deleted"<<endl;
+
     return;
 
 }
@@ -193,6 +199,7 @@ void Manager::delete_member()
 //function to update information about a provider
 void Manager::update_provider()
 {
+    clear();
     int id_number;
     do
     {
@@ -301,6 +308,7 @@ void Manager::update_provider()
 //function to update information about a member
 void Manager::update_member()
 {
+    clear();
     int id_number;
     do
     {
@@ -410,6 +418,7 @@ void Manager::update_member()
 //function to add member to the ChocAn Database
 void Manager::add_member()
 {
+    clear();
     string name;
     int id;
     string st;
@@ -454,6 +463,7 @@ void Manager::add_member()
 //function to add a provider to the ChocAn database
 void Manager::add_provider()
 {
+    clear();
     string name;
     int id;
     string st;
