@@ -42,7 +42,7 @@ void mainMenu() {
 			} else {
 				cin.ignore(100, '\n');
 				if (input == '1') {
-					int flag = choco.selectProvider(id, provider);
+					choco.selectProvider(id, provider);
 					if (provider != NULL) {
 						cout<<"Name: "<<provider->getUserName()<<endl;
 						provider->menu();
@@ -70,7 +70,15 @@ void mainMenu() {
 
 int main() {
 	// addData(); //only use when the database is empty
+	// Chocoholics ch;
+
+	// Provider* test = NULL;
+	// ch.selectProvider(23453535, test);
+	// if (test != NULL) {
+	// 	test->generateReport();
+	// } else cout<<"test is NULL"<<endl;
 	mainMenu();
+
 	return 0;
 }
 

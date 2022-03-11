@@ -166,6 +166,13 @@ int Chocoholics::selectMember(const int key, Member*& mem) {
         return 1;
 	};
 
+    if (mem->getUserName().size() == 0) {
+        delete mem;
+        mem = NULL;
+        sqlite3_close(DB);
+        return 2;
+    }
+
     string q1 = "SELECT * FROM SERVICES WHERE PARENT_ID = ";
     q1 += to_string(mem->getId());
 
@@ -315,6 +322,12 @@ int Chocoholics::selectProvider(const int key, Provider*& pro) {
         sqlite3_close(DB);
         return 1;
 	}
+    if (pro->getUserName().size() == 0) {
+        delete pro;
+        pro = NULL;
+        sqlite3_close(DB);
+        return 2;
+    }
 
     string q1 = "SELECT * FROM SERVICES WHERE PARENT_ID = ";
     q1 += to_string(pro->getId());
@@ -327,10 +340,9 @@ int Chocoholics::selectProvider(const int key, Provider*& pro) {
         sqlite3_close(DB);
         return 1;
 	}
-
+    
     sqlite3_close(DB);
-
-    sqlite3_close(DB);
+    return 0;
 }
 
 
@@ -409,6 +421,7 @@ int Chocoholics::deleteMember(const int key) {
 	}
 
     sqlite3_close(DB);
+    return 0;
 } 
 
 
@@ -495,7 +508,15 @@ int Chocoholics::selectService(const int key, Service*& ser) {
         return 1;
 	}
 
+    if (ser->getServiceName().size() == 0) {
+        delete ser;
+        ser = NULL;
+        sqlite3_close(DB);
+        return 2;
+    }
+
     sqlite3_close(DB);
+    return 0;
 
 }
 int Chocoholics::deleteService(const int key) {
