@@ -77,20 +77,18 @@ void Manager::generate_provider_report()
     
     } while (true);
 
-    int vector_size = provider_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    { 
-        //found a match, generate report
-        if(provider_list[i]->getId() == id_number)
-        {
-            provider_list[i]->generateReport();
-            cout << "The report for the provider as been generated!" << endl << endl;
-            return;
-        }
+    Chocoholics choco;
+    Member * a_mem = NULL;
+    choco.selectProvider(id_number,a_pro);
 
+    //provider not in the database
+    if(a_pro == NULL)
+        cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+    else{
+        a_pro->generateReport();
+        cout << "The report for the provider has been generated!" << endl << endl;
     }
 
-    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
     return;
 
 }
@@ -126,7 +124,7 @@ void Manager::generate_member_report()
         cout << "The member ID does not exist in the ChocAn database." << endl << endl;
     else{
         a_mem->generateReport();
-        cout << "The report for the member as been generated!" << endl << endl;
+        cout << "The report for the member sas been generated!" << endl << endl;
     }
 
     return;
