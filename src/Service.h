@@ -35,6 +35,8 @@ class Service : public Date{
         bool operator !=(const Service&);
         bool operator ==(const Service&);
 
+        int compare(const Service& cp) const;
+
     protected:
         string service_name;
         int service_code;

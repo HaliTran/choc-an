@@ -7,6 +7,13 @@ Provider::Provider()
     total_fee = 0;
 }
 
+Provider::~Provider() {
+    for (auto i : Service_list) {
+        delete i;
+    }
+    Service_list.clear();
+}
+
 Provider::Provider(const string &u_name, const int id, const string &st, const string &city, const string &state, const int zip) : Address(u_name, id, st, city, state, zip)
 {
     total_consultations = 0;
@@ -23,11 +30,6 @@ Provider::Provider(Provider &source) : Address(source)
     }
     total_consultations = source.total_consultations;
     total_fee = source.total_fee;
-}
-
-Provider::~Provider()
-{
-    Service_list.clear();
 }
 
 int Provider::getTotalConsultations()
@@ -111,7 +113,12 @@ void Provider::printServices() {
     vector <Service*> services;
     vector <Service*>* ptr = &services;
 
-    int flag = choco.selectAllService(ptr);
+    choco.selectAllService(ptr);
+    if (ptr == NULL) return;
+    sort(services.begin(), services.end(), [] (const Service* x, const Service* y) {
+       return x->compare(*y);
+    });
+
     cout<<endl;
     for (auto i : services) {
         cout<<"Service Name: "<<i->getServiceName()<<endl;

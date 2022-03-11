@@ -92,3 +92,7 @@ bool Service::operator ==(const Service& cp) {
 bool Service::operator !=(const Service& cp) {
     return !(operator==(cp));
 }
+
+int Service::compare(const Service& cp) const{
+    return service_name.compare(cp.service_name);
+}
