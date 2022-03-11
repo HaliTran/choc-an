@@ -78,7 +78,7 @@ void Manager::generate_provider_report()
     } while (true);
 
     Chocoholics choco;
-    Member * a_mem = NULL;
+    Provider * a_pro = NULL;
     choco.selectProvider(id_number,a_pro);
 
     //provider not in the database
@@ -153,19 +153,9 @@ void Manager::delete_provider()
     
     } while (true);
 
-    int vector_size = provider_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    { 
-        //found a match, delete from the database
-        if(provider_list[i]->getId() == id_number)
-        {
-            delete provider_list[i];
-            provider_list.erase(provider_list.begin() + i);
-            cout << "The provider has been successfully removed from the ChocAn Database." << endl << endl;
-            return;
-        }
-    }
-    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+    //delete provider
+    Chocoholics choco;
+    choco.deleteProvider(id_number);
     return;
 
 }
@@ -192,19 +182,10 @@ void Manager::delete_member()
     
     } while (true);
 
-    int vector_size = member_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    { 
-        //found a match, delete from the database
-        if(member_list[i]->getId() == id_number)
-        {
-            delete member_list[i];
-            member_list.erase(member_list.begin() + i);
-            cout << "The member has been successfully removed from the ChocAn Database." << endl << endl;
-            return;
-        }
-    }
-    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+
+    //delete member
+    Chocoholics choco;
+    choco.deleteMember(id_number);
     return;
 
 }
@@ -230,90 +211,90 @@ void Manager::update_provider()
     
     } while (true);
 
-    int vector_size = provider_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    {
-        //there was a matching member ID
-        if(provider_list[i]->getId() == id_number)
-        {
+    Chocoholics choco;
+    Provider* a_pro = NULL;
+    choco.selectProvider(id_number,a_pro);
 
-            int input;
-            cout << '\n';
-            cout << "--------------" << endl;
-            cout << "1 = Username" << endl;
-            cout << "2 = ID number" << endl;
-            cout << "3 = Street" << endl;
-            cout << "4 = City" << endl;
-            cout << "5 = State" << endl;
-            cout << "6 = Zip Code" << endl;
-            cout << "--------------" << endl;
-            cout << "Which information of this provider would you like to update: ";
-        
-            //getting user input and checking if valid
-            //re-prompt if necessary
-            cin >> input;
-            cin.ignore(100,'\n');
-            while(input < 1 || input > 6)
-            {
-                cout << "Error invalid input. Please try again." << endl;
-                cout << "Enter: ";
-                cin >> input;
-                cin.ignore(100,'\n');
-            }
-            //updating the provider information
-            if(input == 1)
-            {
-                string name;
-                cout << "Providers's new name: ";
-                getline(cin,name,'\n');
-                provider_list[i]->updateUserName(name);
-            }
-            else if(input == 2)
-            {
-                int id;
-                cout << "Provider's new ID number (9 digits): ";
-                cin >> id;
-                cin.ignore();
-                provider_list[i]->updateId(id);
-            }
-            else if(input == 3)
-            {
-                string st;
-                cout << "Provider's new street address: ";
-                getline(cin,st,'\n'); 
-                provider_list[i]->updateStreet(st);
-            }
-            else if(input == 4)
-            {
-                string city;
-                cout << "Provider's new city: ";
-                getline(cin,city,'\n');
-                provider_list[i]->updateCity(city);
-            }
-            else if(input == 5)
-            {
-                string state;
-                cout << "Proivder's new state: ";
-                getline(cin,state,'\n');
-                provider_list[i]->updateState(state);
-            }
-            else
-            {
-                int zip;
-                cout << "Provider's new zip code: ";
-                cin >> zip;
-                cin.ignore(100,'\n');
-                provider_list[i]->updateZipCode(zip);
-            }
-
-            cout << "Information updated successfully!" << endl << endl;
-            return;
-        }
-
+    if(a_pro == NULL){
+        cout <<"The provider ID does not exist in the database." << endl << endl;
+        return;
     }
-    //provider ID was not valid
-    cout << "The provider ID does not exist in the ChocAn database." << endl << endl;
+
+    int input;
+    cout << '\n';
+    cout << "--------------" << endl;
+    cout << "1 = Username" << endl;
+    cout << "2 = ID number" << endl;
+    cout << "3 = Street" << endl;
+    cout << "4 = City" << endl;
+    cout << "5 = State" << endl;
+    cout << "6 = Zip Code" << endl;
+    cout << "--------------" << endl;
+    cout << "Which information of this provider would you like to update: ";
+
+    //getting user input and checking if valid
+    //re-prompt if necessary
+    cin >> input;
+    cin.ignore(100,'\n');
+    while(input < 1 || input > 6)
+    {
+        cout << "Error invalid input. Please try again." << endl;
+        cout << "Enter: ";
+        cin >> input;
+        cin.ignore(100,'\n');
+    }
+    //updating the provider information
+    if(input == 1)
+    {
+        string name;
+        cout << "Providers's new name: ";
+        getline(cin,name,'\n');
+        a_pro->updateUserName(name);
+    }
+    else if(input == 2)
+    {
+        int id;
+        cout << "Provider's new ID number (9 digits): ";
+        cin >> id;
+        cin.ignore();
+        a_pro->updateId(id);
+    }
+    else if(input == 3)
+    {
+        string st;
+        cout << "Provider's new street address: ";
+        getline(cin,st,'\n'); 
+        a_pro->updateStreet(st);
+    }
+    else if(input == 4)
+    {
+        string city;
+        cout << "Provider's new city: ";
+        getline(cin,city,'\n');
+        a_pro->updateCity(city);
+    }
+    else if(input == 5)
+    {
+        string state;
+        cout << "Proivder's new state: ";
+        getline(cin,state,'\n');
+        a_pro->updateState(state);
+    }
+    else
+    {
+        int zip;
+        cout << "Provider's new zip code: ";
+        cin >> zip;
+        cin.ignore(100,'\n');
+        a_pro->updateZipCode(zip);
+    }
+
+    //update provider information in database
+    choco.deleteProvider(id_number);
+    choco.insertProvider(a_pro);
+    cout << "Information updated successfully!" << endl << endl;
     return;
+    
 }
 
 
@@ -338,91 +319,92 @@ void Manager::update_member()
     
     } while (true);
 
-    int vector_size = member_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    {
-        //there was a matching member ID
-        if(member_list[i]->getId() == id_number)
-        {
+    Chocoholics choco;
+    Member* a_mem = NULL;
+    choco.selectMember(id_number,a_mem);
 
-            int input;
-            cout << '\n';
-            cout << "--------------" << endl;
-            cout << "1 = Username" << endl;
-            cout << "2 = ID number" << endl;
-            cout << "3 = Street" << endl;
-            cout << "4 = City" << endl;
-            cout << "5 = State" << endl;
-            cout << "6 = Zip Code" << endl;
-            cout << "--------------" << endl;
-            cout << "Which information of this member would you like to update: ";
-        
-            //getting user input and checking if valid
-            //re-prompt if necessary
-            cin >> input;
-            cin.ignore(100,'\n');
-            while(input < 1 || input > 6)
-            {
-                cout << "Error invalid input. Please try again." << endl;
-                cout << "Enter: ";
-                cin >> input;
-                cin.ignore(100,'\n');
-            }
-            //updating the member information
-            if(input == 1)
-            {
-                string name;
-                cout << "Member's new name: ";
-                getline(cin,name,'\n');
-                member_list[i]->updateUserName(name);
-            }
-            else if(input == 2)
-            {
-                int id;
-                cout << "Member's new ID number (9 digits): ";
-                cin >> id;
-                cin.ignore();
-                member_list[i]->updateId(id);
-            }
-            else if(input == 3)
-            {
-                string st;
-                cout << "Member's new street address: ";
-                getline(cin,st,'\n'); 
-                member_list[i]->updateStreet(st);
-            }
-            else if(input == 4)
-            {
-                string city;
-                cout << "Member's new city: ";
-                getline(cin,city,'\n');
-                member_list[i]->updateCity(city);
-            }
-            else if(input == 5)
-            {
-                string state;
-                cout << "Member's new state: ";
-                getline(cin,state,'\n');
-                member_list[i]->updateState(state);
-            }
-            else
-            {
-                int zip;
-                cout << "Member's new zip code: ";
-                cin >> zip;
-                cin.ignore(100,'\n');
-                member_list[i]->updateZipCode(zip);
-            }
-
-            cout << "Information updated successfully!" << endl << endl;
-            return;
-            
-        }
-
+    if(a_mem == NULL){
+        cout <<"The member ID does not exist in the database." << endl << endl;
+        return;
     }
-    //member ID was not valid
-    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+
+    int input;
+    cout << '\n';
+    cout << "--------------" << endl;
+    cout << "1 = Username" << endl;
+    cout << "2 = ID number" << endl;
+    cout << "3 = Street" << endl;
+    cout << "4 = City" << endl;
+    cout << "5 = State" << endl;
+    cout << "6 = Zip Code" << endl;
+    cout << "--------------" << endl;
+    cout << "Which information of this member would you like to update: ";
+
+    //getting user input and checking if valid
+    //re-prompt if necessary
+    cin >> input;
+    cin.ignore(100,'\n');
+    while(input < 1 || input > 6)
+    {
+        cout << "Error invalid input. Please try again." << endl;
+        cout << "Enter: ";
+        cin >> input;
+        cin.ignore(100,'\n');
+    }
+    //updating the member information
+    if(input == 1)
+    {
+        string name;
+        cout << "Member's new name: ";
+        getline(cin,name,'\n');
+        a_mem->updateUserName(name);
+    }
+    else if(input == 2)
+    {
+        int id;
+        cout << "Member's new ID number (9 digits): ";
+        cin >> id;
+        cin.ignore();
+        a_mem->updateId(id);
+    }
+    else if(input == 3)
+    {
+        string st;
+        cout << "Member's new street address: ";
+        getline(cin,st,'\n'); 
+        a_mem->updateStreet(st);
+    }
+    else if(input == 4)
+    {
+        string city;
+        cout << "Member's new city: ";
+        getline(cin,city,'\n');
+        a_mem->updateCity(city);
+    }
+    else if(input == 5)
+    {
+        string state;
+        cout << "Member's new state: ";
+        getline(cin,state,'\n');
+        a_mem->updateState(state);
+    }
+    else
+    {
+        int zip;
+        cout << "Member's new zip code: ";
+        cin >> zip;
+        cin.ignore(100,'\n');
+        a_mem->updateZipCode(zip);
+    }
+
+    //update database
+    choco.deleteMember(id_number);
+    choco.insertMember(a_mem);
+
+    cout << "Information updated successfully!" << endl << endl;
     return;
+
+    
 }
 
 //function to add member to the ChocAn Database
