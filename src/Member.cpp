@@ -1,4 +1,5 @@
 #include "Member.h"
+#include <algorithm>
 
 Member::Member()
 {
@@ -62,9 +63,30 @@ bool Member::generateReport()
     //create text file, 
     ofstream myfile;
 
-    string filename = "Reports/";
-    filename += to_string(getId());  //filename is provider_id
-    filename.append(".txt");    // append ".txt" = provider_id.txt
+    time_t now = time(NULL);
+    tm *ltm = localtime(&now);
+
+    int temp_year = (1900 + ltm->tm_year);
+    int temp_month = (1 + ltm->tm_mon);
+    int temp_day = (ltm->tm_mday);
+
+    string filename = getUserName();
+    int l = filename.length(); // storing the length of the string
+    int c = count(filename.begin(), filename.end(),' '); // counting the number of whitespaces
+    remove(filename.begin(), filename.end(),' '); // removing all the whitespaces
+    filename.resize(l - c);
+    //remove space since file names don't like spaces
+
+    filename += "-";
+    filename +=to_string(temp_year);
+    filename += "-";
+    filename +=to_string(temp_month);
+    filename += "-";
+    filename +=to_string(temp_day);
+    filename +=".txt";
+
+    string file_path = "Reports/";
+    file_path +=filename;
 
     cout<<"Filename: "<<filename<<endl;
 

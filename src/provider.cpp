@@ -272,7 +272,6 @@ bool Provider::generateReport()
     time_t now = time(NULL);
     tm *ltm = localtime(&now);
 
-    char* date;
     int temp_year = (1900 + ltm->tm_year);
     int temp_month = (1 + ltm->tm_mon);
     int temp_day = (ltm->tm_mday);

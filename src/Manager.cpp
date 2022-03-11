@@ -116,20 +116,19 @@ void Manager::generate_member_report()
     
     } while (true);
 
-    int vector_size = member_list.size();
-    for(int i = 0; i < vector_size; ++i)
-    { 
-        //found a match, delete from the database
-        if(member_list[i]->getId() == id_number)
-        {
-            member_list[i]->generateReport();
-            cout << "The report for the member as been generated!" << endl << endl;
-            return;
-        }
+    
+    Chocoholics choco;
+    Member * a_mem = NULL;
+    choco.selectMember(id_number,a_mem);
 
+    //member not in the database
+    if(a_mem == NULL)
+        cout << "The member ID does not exist in the ChocAn database." << endl << endl;
+    else{
+        a_mem->generateReport();
+        cout << "The report for the member as been generated!" << endl << endl;
     }
 
-    cout << "The member ID does not exist in the ChocAn database." << endl << endl;
     return;
 
 }

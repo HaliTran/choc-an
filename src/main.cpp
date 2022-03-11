@@ -69,7 +69,7 @@ void mainMenu() {
 //for more data look line 80
 
 int main() {
-	// addData(); //only use when the database is empty
+	//addData(); //only use when the database is empty
 	// Chocoholics ch;
 
 	// Provider* test = NULL;
