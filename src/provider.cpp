@@ -58,7 +58,7 @@ void Provider::recordService(Service& ser) {
     Service_list.push_back(&ser);
 }
 
-vector<Service*> Provider::getAllService() {
+vector<Service*>& Provider::getAllService() {
     return Service_list;
 }
 

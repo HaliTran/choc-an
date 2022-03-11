@@ -28,7 +28,7 @@ class Provider : public Address{
         bool generateReport();
         int getService(const int id, Service*& ser);
 
-        vector<Service*> getAllService();
+        vector<Service*>& getAllService();
 
         void menu();
 

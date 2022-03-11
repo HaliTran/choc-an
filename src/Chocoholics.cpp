@@ -316,6 +316,20 @@ int Chocoholics::selectProvider(const int key, Provider*& pro) {
         return 1;
 	}
 
+    string q1 = "SELECT * FROM SERVICES WHERE PARENT_ID = ";
+    q1 += to_string(pro->getId());
+    
+    exit = sqlite3_exec(DB, q1.c_str(), callbackServiceMem, &pro->getAllService(), &messageError);
+
+	if (exit != SQLITE_OK) {
+		cerr << "Error : selectData : "<<messageError<< endl;
+		sqlite3_free(messageError);
+        sqlite3_close(DB);
+        return 1;
+	}
+
+    sqlite3_close(DB);
+
     sqlite3_close(DB);
 }
 
