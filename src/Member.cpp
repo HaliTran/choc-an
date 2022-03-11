@@ -91,7 +91,7 @@ bool Member::generateReport()
     cout<<"Filename: "<<filename<<endl;
 
 
-    myfile.open (filename);
+    myfile.open (file_path);
     if (!myfile.is_open())
     {
         cout << "Error Generating Member Report" << endl;
