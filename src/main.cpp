@@ -72,7 +72,11 @@ void mainMenu()
 	} while (input != '0');
 }
 
-//Testing purposes already added data
+/*---------------------------------------------------------------------------------------------------
+//THIS IS FOR THE GRADER, IF YOU WOULD LIKE, BELOW ARE SOME MEMBER,PROVIDER, AND SERVICES
+//THAT ARE ALREADY IN THE DATABASE TO TEST. HOWEVER, YOU CAN STILL ADD YOUR OWN PROVIDERS AND MEMBERS!
+---------------------------------------------------------------------------------------------------*/
+//Testing purposes -> already added data
 // Members = 100000000, 200000000, 300000000, 400000000 
 // Providers = 123123123, 234234234, 345345345, 456456456
 // Services = 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000
