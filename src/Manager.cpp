@@ -455,6 +455,7 @@ void Manager::add_member()
     Chocoholics choco;
     choco.deleteMember(id);
     choco.insertMember(a_mem);
+    delete a_mem;
     
     cout <<"The member has been added to the ChocAn database!" << endl << endl;
     return;
@@ -500,7 +501,7 @@ void Manager::add_provider()
     Chocoholics choco;
     choco.deleteProvider(id);
     choco.insertProvider(a_pro); //inserting provider into database
-
+    delete a_pro;
     cout <<"The provider has been added to the ChocAn database!" << endl << endl;
     return;
 }

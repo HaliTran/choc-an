@@ -72,9 +72,10 @@ void mainMenu()
 	} while (input != '0');
 }
 
-// Members = 100000000, 200000000, 300000000, 400000000 ....
+//Testing purposes already added data
+// Members = 100000000, 200000000, 300000000, 400000000 
 // Providers = 123123123, 234234234, 345345345, 456456456
-// Services = 100000, 200000, 300000, 400000, 500000
+// Services = 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000
 
 int main()
 {
@@ -185,4 +186,26 @@ void addData()
 	choco.insertProvider(p2);
 	choco.insertProvider(p3);
 	choco.insertProvider(p4);
+
+
+	delete ser1;
+	delete ser2;
+	delete ser3;
+	delete ser4;
+	delete ser5;
+	delete ser6;
+	delete ser7;
+	delete ser8;
+	delete ser9;
+
+	delete m1;
+	delete m2;
+	delete m3;
+	delete m4;
+	delete m5;
+
+	delete p1;
+	delete p2;
+	delete p3;
+	delete p4;
 }

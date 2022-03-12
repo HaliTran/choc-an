@@ -267,6 +267,9 @@ void Provider::inputService(Member& mem, Service*& ser_data, int service_code, i
         cout<<"Comment: "<<i->getComment()<<endl;
         cout << "------------------------------------------" << endl;
     }
+
+    delete member_ser;
+    delete provider_ser;
 }
 
 bool Provider::generateReport()
