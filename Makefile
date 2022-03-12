@@ -1,5 +1,5 @@
 CPP=g++
-CPPFLAGS=-g -Wall -Wextra
+CPPFLAGS=-g -Wall -Wextra -lsqlite3
 
 CHOC_AN_MAIN=src/main.cpp
 TESTS=TestDate.cpp
