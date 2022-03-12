@@ -78,7 +78,7 @@ void mainMenu()
 
 int main()
 {
-	addData(); //only use when the database is empty
+	// addData(); //only use when the database is empty
 
 	mainMenu();
 
