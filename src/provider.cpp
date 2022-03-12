@@ -73,7 +73,7 @@ void Provider::menu() {
         cout<<"Provider: "<<getUserName()<<endl;
         cout << "------------------------------------------" << endl;
         cout<<"1 = Enter information about service provided to a member"<<endl;
-        cout<<"2 = Request Provider dictory"<<endl;
+        cout<<"2 = Request Provider directory"<<endl;
         cout<<"0 = Exit"<<endl;
         cout << "------------------------------------------" << endl;
         cout<<"Please enter a number corresponding to the task you'd like to execute: ";
@@ -90,12 +90,9 @@ void Provider::menu() {
                 continue;
             } 
             Chocoholics choco;
-            Member* mem;
-            if (choco.selectMember(mem_id, mem) == 0 && mem != NULL) {
-                if (mem->getUserName().size() == 0) {
-                    cout<<"ID not found"<<endl;
-                    continue;
-                }
+            Member* mem = NULL;
+            choco.selectMember(mem_id, mem);
+            if (mem != NULL) {
                 validateService(*mem);
                 choco.deleteMember(mem->getId());
                 choco.insertMember(mem);
@@ -149,19 +146,25 @@ void Provider::validateService(Member& mem) {
 
     Chocoholics choco;
     Service* ser_data;
-    //returns only service number, service name, and service fee
-    if (choco.selectService(service_code, ser_data) == 0) { 
-        cout<<"The service name is: "<<ser_data->getServiceName()<<endl;
-        cout<<"Is this correct (y/n): ";
-        char flag;
-        cin>>flag;
-        cin.ignore(100, '\n');
 
-        if (!(flag == 'Y' || flag == 'y')) {
-            cout<<"Please try again"<<endl;
-            return;
-        } 
+    choco.selectService(service_code, ser_data);
+    if (ser_data == NULL) {
+        cout<<"Error Service code does not exist"<<endl;
+        return;
     }
+
+    cout<<"The service name is: "<<ser_data->getServiceName()<<endl;
+    cout<<"Is this correct (y/n): ";
+    char flag;
+    cin>>flag;
+    cin.ignore(100, '\n');
+
+    if (!(flag == 'Y' || flag == 'y')) {
+        cout<<"Please try again"<<endl;
+        return;
+    }
+
+
     clear();
     cout << "------------------------------------------" << endl;
     do {

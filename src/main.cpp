@@ -20,47 +20,7 @@ void mainMenu()
 	Chocoholics choco;
 
 	Provider *provider = NULL;
-	Manager *manager;
-	// do {
-	//     cout << "------------------------------------------" << endl;
-	// 	cout<<"1 = Provider"<<endl;
-	// 	cout<<"2 = Manager"<<endl;
-	// 	cout<<"0 = Exit"<<endl;
-	//     cout << "------------------------------------------" << endl;
-	// 	cout<<"Enter: ";
-	// 	cin>>input;
-	// 	cin.ignore(100, '\n');
-
-	// 	if (input == '0') return ;
-
-	// 	cout<<"Please enter your ID Number: ";
-
-	// 	if (!(cin>>id)) {
-	//             cout<<"Error not a number, please input a number"<<endl;
-	// 			cin.ignore(100, '\n');
-	//         } else if (id < 100000000 || id > 999999999) {
-	// 			cout<<"Error Invalid Number"<<endl;
-	// 			cin.ignore(100, '\n');
-	// 		} else {
-	// 			cin.ignore(100, '\n');
-	// 			if (input == '1') {
-	// 				choco.selectProvider(id, provider);
-	// 				if (provider != NULL) {
-	// 					cout<<"Name: "<<provider->getUserName()<<endl;
-	// 					provider->menu();
-	// 					choco.deleteProvider(provider->getId());
-	// 					choco.insertProvider(provider);
-	// 				}
-	// 			}
-
-	// 			if (input == '2') {
-	// 				manager = new Manager;
-	// 				manager -> menu();
-	// 				delete manager;
-	// 			}
-	// 		}
-
-	// }while(input != '0');
+	Manager *manager = NULL;
 
 	do
 	{
@@ -95,7 +55,11 @@ void mainMenu()
 			{
 				cin.ignore(100, '\n');
 				choco.selectProvider(id, provider);
-				provider->menu();
+				if (provider != NULL) {
+					provider->menu();
+					choco.deleteProvider(provider->getId());
+					choco.insertProvider(provider);
+				} else cout<<"Provider does not exist"<<endl;
 			}
 		}
 		else if (input == '2')
@@ -114,7 +78,7 @@ void mainMenu()
 
 int main()
 {
-	// addData(); //only use when the database is empty
+	addData(); //only use when the database is empty
 
 	mainMenu();
 
